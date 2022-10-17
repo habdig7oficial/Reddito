@@ -2,13 +2,16 @@ node_modules
 
 npm-debug.log
 
-# **/*.ts
+**/*.ts
+
+
 
 **/*.sh
 
 **/*.md
 
-build
+**/*.css
+
 
 src/assets/CSS
 

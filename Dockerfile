@@ -18,22 +18,21 @@ COPY . .
 # Instala dependencias
 RUN npm install
 
-RUN npx tsc --version
-
-# Transpila o Typescript
-RUN npm run transpile
-
 # copia o bootstrap
 RUN cp ./node_modules/bootstrap/scss ./src/assets/SCSS/bootstrap -r
 RUN cp ./node_modules/bootstrap/dist/js/ ./src/assets/JS/bootstrap/ -r
-# RUN ls /src/assets/SCSS/bootstrap
+
+
+RUN ls ./src/assets/SCSS/bootstrap
+RUN ls ./node_modules/bootstrap/scss
+#RUN ls ./src/assets/JS/bootstrap/
 
 # Trasnpila arquivos sass em css
 RUN npm run sass
 
 # Remove arquivos desnecessários para produção
 
-RUN find . -name "*.ts" -delete
+#RUN find . -name "*.ts" -delete
 RUN find . -name "*.scss" -delete
 RUN rmdir ./src/* --ignore-fail-on-non-empty
 
