@@ -14,7 +14,7 @@
 
 *.sh
 
-!.deploy.sh
+!deploy.sh
 
 ## Removendo Minhas Notas Pessoais (Mateus)
 
