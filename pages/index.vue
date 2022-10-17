@@ -23,4 +23,5 @@
 
 <template>
   <VueNavbar></VueNavbar>
+  <p>hello</p>
 </template>
