@@ -10,4 +10,5 @@ console.log(env)
 
 if( env == "dev"){
     fs.copy("node_modules/bootstrap/scss/", "src/assets/SCSS/bootstrap")
+    fs.copy("node_modules/bootstrap/dist/js", "src/assets/JS/bootstrap")
 }

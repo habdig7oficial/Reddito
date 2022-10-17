@@ -79,10 +79,17 @@ export default function (app: Express) {
     let lenthP = 200;
 
     if (dados.descricao.length > lenthP) {
+      //lembrar de adicionar data
       return res.send(
         `O comprimento da descrição é maior que o permitido. ${dados.descricao.length} > ${lenthP}`,
       );
     }
+
+    console.log(dados.ingredientes);
+
+    dados.ingredientes = dados.ingredientes.split(",");
+
+    console.log(dados.ingredientes);
 
     try {
       let gravar = await new recipes({
@@ -127,6 +134,12 @@ export default function (app: Express) {
       DelSecret(res);
       return res.send(`Não foi possível assinar o jwt`);
     }
+
+    console.log(dados.ingredientes);
+
+    dados.ingredientes = dados.ingredientes.split(",");
+
+    console.log(dados.ingredientes);
 
     try {
       let update = await recipes.findOneAndUpdate(

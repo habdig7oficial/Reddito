@@ -8,10 +8,13 @@
 *.env
 
 
-## Removendo Scripts de Automatização (Mateus)
+## Removendo Scripts de Automatização com exeção do de deploy
+
+
 
 *.sh
 
+!.deploy.sh
 
 ## Removendo Minhas Notas Pessoais (Mateus)
 
