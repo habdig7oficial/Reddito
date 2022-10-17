@@ -1,20 +1,5 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    title: 'Reddito-Nuxt',
-    htmlAttrs: {
-      lang: 'pt-br'
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Reddito seu novo site de receitas' },
-      { name: 'format-detection', content: 'telephone=no' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
+
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -23,6 +8,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: "~/node_modules/bootstrap/dist/js/bootstrap.min.js", mode:"client" }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

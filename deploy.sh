@@ -2,6 +2,7 @@
 
 git add .;
 
+
 echo "Insira as novidades adicionadas"
 
 read msg
