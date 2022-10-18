@@ -50,7 +50,7 @@ export default function (app: Express) {
     res.render("create.ejs", { retorno });
   });
 
-  const upload = multer({ dest: "./" });
+  const upload = multer({ dest: "./assets/Public/E" });
 
   app.post(
     "/create",
