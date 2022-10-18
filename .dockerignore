@@ -13,9 +13,9 @@ npm-debug.log
 **/*.css
 
 
-src/assets/CSS
+#src/assets/CSS
 
-src/assets/SCSS/bootstrap
+#src/assets/SCSS/bootstrap
 
 #tsconfig.json
 

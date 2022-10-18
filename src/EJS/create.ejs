@@ -10,12 +10,13 @@
 
     <h1>Create</h1>
 
-    <form action="/create" method="post">
+    <form action="/create" enctype="multipart/form-data" method="post">
         <input type="text" name="titulo" id="">
         <input type="text" name="descricao" id="">
         <input type="number" name="porcoes" id="">
         <input type="text" name="ingredientes" id="">
         <textarea name="preparo" id="" cols="30" rows="10"></textarea>
+        <input type="file" name="imagem" id="">
     
         <input type="submit" value="log">
     </form>

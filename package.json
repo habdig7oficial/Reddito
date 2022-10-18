@@ -34,6 +34,7 @@
     "@types/express": "^4.17.14",
     "@types/fs-extra": "^9.0.13",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/multer": "^1.4.7",
     "dotenv": "^16.0.2",
     "fs-extra": "^10.1.0",
     "nodemon": "^2.0.20",
@@ -52,6 +53,7 @@
     "jsonwebtoken": "^8.5.1",
     "lru-cache": "^7.14.0",
     "mongoose": "^6.6.1",
+    "multer": "^1.4.5-lts.1",
     "sass": "^1.54.9"
   }
 }

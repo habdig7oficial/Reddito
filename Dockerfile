@@ -19,16 +19,16 @@ COPY . .
 RUN npm install
 
 # copia o bootstrap
-RUN cp ./node_modules/bootstrap/scss ./src/assets/SCSS/bootstrap -r
-RUN cp ./node_modules/bootstrap/dist/js/ ./src/assets/JS/bootstrap/ -r
+#RUN cp ./node_modules/bootstrap/scss ./src/assets/SCSS/bootstrap -r
+#RUN cp ./node_modules/bootstrap/dist/js/ ./src/assets/JS/bootstrap/ -r
 
 
-RUN ls ./src/assets/SCSS/bootstrap
-RUN ls ./node_modules/bootstrap/scss
+#RUN ls ./src/assets/SCSS/bootstrap
+#RUN ls ./node_modules/bootstrap/scss
 #RUN ls ./src/assets/JS/bootstrap/
 
 # Trasnpila arquivos sass em css
-RUN npm run sass
+#RUN npm run sass
 
 # Remove arquivos desnecessários para produção
 

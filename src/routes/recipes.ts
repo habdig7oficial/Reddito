@@ -1,6 +1,7 @@
 /** @format */
 
 import { Express, Request, Response } from "express";
+import multer from "multer";
 import { conexao } from "../.config/database";
 
 import { users } from "../.models/users";
@@ -8,14 +9,13 @@ import { recipes } from "../.models/recipes";
 
 import { verifyToken } from "./middleware/Tokens";
 import DelSecret from "./middleware/DeleteSecret";
+import { NULL } from "sass";
 
 export default function (app: Express) {
   conexao();
 
   app.get("/create", async function (req: Request, res: Response) {
-    let jwt = req.cookies.jwt;
-
-    let email = req.cookies.email;
+    let { jwt, email } = req.cookies;
 
     let consulta = await users.findOne({
       Email: email,
@@ -50,70 +50,74 @@ export default function (app: Express) {
     res.render("create.ejs", { retorno });
   });
 
-  app.post("/create", async function (req: Request, res: Response) {
-    let dados = req.body;
+  const upload = multer({ dest: "./" });
 
-    let jwt = req.cookies.jwt;
-    let email = req.cookies.email;
+  app.post(
+    "/create",
+    upload.single("imagem"),
+    async function (req: Request, res: Response) {
+      let { titulo, descricao, porcoes, ingredientes, preparo } = req.body;
 
-    let consulta = await users.findOne({
-      Email: email,
-    });
+      let { jwt, email } = req.cookies;
 
-    if (consulta === null) {
-      DelSecret(res);
-      return res.send(`Não foi possivel encontrar o email ${email}`);
-    }
-
-    try {
-      let result = verifyToken({
-        analise_token: jwt,
-        secret: consulta.JWT,
-      });
-    } catch (err) {
-      console.error(err);
-      DelSecret(res);
-      return res.send(`Não foi possível assinar o jwt`);
-    }
-
-    let lenthP = 200;
-
-    if (dados.descricao.length > lenthP) {
-      //lembrar de adicionar data
-      return res.send(
-        `O comprimento da descrição é maior que o permitido. ${dados.descricao.length} > ${lenthP}`,
-      );
-    }
-
-    console.log(dados.ingredientes);
-
-    dados.ingredientes = dados.ingredientes.split(",");
-
-    console.log(dados.ingredientes);
-
-    try {
-      let gravar = await new recipes({
-        Titulo: dados.titulo,
+      let consulta = await users.findOne({
         Email: email,
-        Descricao: dados.descricao,
-        Porcoes: dados.porcoes,
-        Imagem: dados.imagem,
-        Ingredientes: dados.ingredientes,
-        Preparo: dados.preparo,
-      }).save();
-    } catch (err) {
-      console.log(err);
-      return res.send("nem todos os campos foram preenchidos");
-    }
+      });
 
-    res.redirect("/create");
-  });
+      if (consulta === null) {
+        DelSecret(res);
+        return res.send(`Não foi possivel encontrar o email ${email}`);
+      }
+
+      try {
+        let result = verifyToken({
+          analise_token: jwt,
+          secret: consulta.JWT,
+        });
+      } catch (err) {
+        console.error(err);
+        DelSecret(res);
+        return res.send(`Não foi possível assinar o jwt`);
+      }
+
+      let lenthP = 200;
+
+      if (descricao.length > lenthP) {
+        //lembrar de adicionar data
+        return res.send(
+          `O comprimento da descrição é maior que o permitido. ${descricao.length} > ${lenthP}`,
+        );
+      }
+
+      console.log(ingredientes);
+
+      ingredientes = ingredientes.split(",");
+
+      console.log(ingredientes);
+
+      try {
+        let gravar = await new recipes({
+          Titulo: titulo,
+          Email: email,
+          Descricao: descricao,
+          Porcoes: porcoes,
+          Imagem: null,
+          Ingredientes: ingredientes,
+          Preparo: preparo,
+        }).save();
+      } catch (err) {
+        console.log(err);
+        return res.send("nem todos os campos foram preenchidos");
+      }
+
+      res.redirect("/create");
+    },
+  );
 
   app.post("/update", async function (req: Request, res: Response) {
     let dados = req.body;
 
-    let jwt = req.cookies.jwt;
-    let email = req.cookies.email;
+    let { jwt, email } = req.cookies;
 
     let consulta = await users.findOne({
       Email: email,
