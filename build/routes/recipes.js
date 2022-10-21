@@ -13,15 +13,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const multer_1 = __importDefault(require("multer"));
 const database_1 = require("../.config/database");
 const users_1 = require("../.models/users");
 const recipes_1 = require("../.models/recipes");
 const Tokens_1 = require("./middleware/Tokens");
 const DeleteSecret_1 = __importDefault(require("./middleware/DeleteSecret"));
+const multer_1 = require("../.config/multer");
 function default_1(app) {
     (0, database_1.conexao)();
     app.get("/create", function (req, res) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             let { jwt, email } = req.cookies;
             let consulta = yield users_1.users.findOne({
@@ -47,15 +48,37 @@ function default_1(app) {
                 return res.send(`Não foi possivel assinar sua autenticação`);
             }
             let retorno = yield recipes_1.recipes.find({ Email: email });
-            console.log(retorno);
+            /* console.log(retorno); */
+            for (let i = 0; i < retorno.length; i++) {
+                if (retorno[i].Imagem === undefined) {
+                    retorno[i].Imagem = "";
+                }
+                else {
+                    retorno[i].Imagem = (_a = retorno[i].Imagem) === null || _a === void 0 ? void 0 : _a.replace(multer_1.root, "");
+                }
+            }
             res.render("create.ejs", { retorno });
         });
     });
-    const upload = (0, multer_1.default)({ dest: "./" });
-    app.post("/create", upload.single("imagem"), function (req, res) {
+    app.post("/create", multer_1.M_conf.single("imagem"), function (req, res) {
+        var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
             let { titulo, descricao, porcoes, ingredientes, preparo } = req.body;
             let { jwt, email } = req.cookies;
+            let path;
+            if (((_a = req.file) === null || _a === void 0 ? void 0 : _a.destination) == undefined ||
+                ((_b = req.file) === null || _b === void 0 ? void 0 : _b.filename) == undefined) {
+                path = "";
+            }
+            else {
+                path = `${req.file.destination}/${req.file.filename}`;
+            }
+            console.log(path);
+            titulo.trim();
+            descricao.trim();
+            porcoes.trim();
+            ingredientes.trim();
+            preparo.trim();
             let consulta = yield users_1.users.findOne({
                 Email: email,
             });
@@ -79,16 +102,16 @@ function default_1(app) {
                 //lembrar de adicionar data
                 return res.send(`O comprimento da descrição é maior que o permitido. ${descricao.length} > ${lenthP}`);
             }
-            console.log(ingredientes);
+            /*console.log(ingredientes);*/
             ingredientes = ingredientes.split(",");
-            console.log(ingredientes);
+            /*console.log(ingredientes);*/
             try {
                 let gravar = yield new recipes_1.recipes({
                     Titulo: titulo,
                     Email: email,
                     Descricao: descricao,
                     Porcoes: porcoes,
-                    Imagem: null,
+                    Imagem: path,
                     Ingredientes: ingredientes,
                     Preparo: preparo,
                 }).save();
@@ -97,12 +120,13 @@ function default_1(app) {
                 console.log(err);
                 return res.send("nem todos os campos foram preenchidos");
             }
+            console.log(req.file);
             res.redirect("/create");
         });
     });
     app.post("/update", function (req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let dados = req.body;
+            let { _id, titulo, descricao, porcoes, imagem, ingredientes, preparo } = req.body;
             let { jwt, email } = req.cookies;
             let consulta = yield users_1.users.findOne({
                 Email: email,
@@ -122,21 +146,21 @@ function default_1(app) {
                 (0, DeleteSecret_1.default)(res);
                 return res.send(`Não foi possível assinar o jwt`);
             }
-            console.log(dados.ingredientes);
-            dados.ingredientes = dados.ingredientes.split(",");
-            console.log(dados.ingredientes);
+            /*console.log(dados.ingredientes);*/
+            ingredientes = ingredientes.split(",");
+            /*console.log(dados.ingredientes);*/
             try {
                 let update = yield recipes_1.recipes.findOneAndUpdate({
-                    _id: dados._id,
+                    _id: _id,
                     Email: email,
                 }, {
-                    Titulo: dados.titulo,
+                    Titulo: titulo,
                     Email: email,
-                    Descricao: dados.descricao,
-                    Porcoes: dados.porcoes,
-                    Imagem: dados.imagem,
-                    Ingredientes: dados.ingredientes,
-                    Preparo: dados.preparo,
+                    Descricao: descricao,
+                    Porcoes: porcoes,
+                    Imagem: imagem,
+                    Ingredientes: ingredientes,
+                    Preparo: preparo,
                     Alterado: true,
                 });
             }
@@ -149,9 +173,8 @@ function default_1(app) {
     });
     app.post("/delete", function (req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let dados = req.body;
-            let jwt = req.cookies.jwt;
-            let email = req.cookies.email;
+            let { _id } = req.body;
+            let { jwt, email } = req.cookies;
             let consulta = yield users_1.users.findOne({
                 Email: email,
             });
@@ -171,7 +194,7 @@ function default_1(app) {
                 return res.send(`Não foi possível assinar o jwt`);
             }
             let del = yield recipes_1.recipes.findOneAndDelete({
-                _id: dados._id,
+                _id: _id,
                 Email: email,
             });
             res.redirect("/create");

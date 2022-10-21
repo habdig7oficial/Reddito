@@ -1,13 +1,12 @@
 /** @format */
 
 import multer from "multer";
+
+/*
 import { Express, Request, Response } from "express";
 
 /*
-const armazenamento = multer.diskStorage({
-    
-})
-*/
+
 
 export default function (app: Express) {
   app.post("/stats", function (req: Request, res: Response) {
@@ -22,3 +21,33 @@ export default function (app: Express) {
     res.send(req.body);
   });
 }
+*/
+
+import makeSecrete from "../routes/middleware/makeSecrete";
+import path from "path";
+
+let max = Math.ceil(999999);
+let min = Math.floor(0);
+
+export const root = "./src/assets"; /* Proibida barra no final */
+export const storage = `/Public/Images`; /* barra no começo é obrigatória para evitar bugs */
+
+export const where = multer.diskStorage({
+  destination: function (req, file, next) {
+    next(null, root + storage);
+  },
+  filename: async function (req, file, next) {
+    let id = `__id-${Date.now()}_${Math.floor(
+      Math.random() * (max - min) + min,
+    )}`;
+
+    let sanitaize =
+      path.parse(file.originalname).name.replace(/[^a-zA-Z1-9]/g, "") +
+      id +
+      path.extname(file.originalname).replace(/[^.a-zA-Z1-9]/g, "");
+
+    next(null, sanitaize);
+  },
+});
+
+export const M_conf = multer({ storage: where });

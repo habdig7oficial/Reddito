@@ -35,3 +35,4 @@ let routes = [
     (0, recipes_1.default)(app),
     (0, error_1.default)(app),
 ]; /* Executando todas a rotas e passando o express para cada uma */
+console.log(__dirname);

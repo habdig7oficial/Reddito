@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Script besta de automação
+
 git add .;
 
 echo "Insira as novidades adicionadas"

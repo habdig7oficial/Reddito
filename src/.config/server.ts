@@ -41,3 +41,5 @@ let routes = [
 ]; /* Executando todas a rotas e passando o express para cada uma */
 
 export { app, port }; /* Exportando variáveis */
+
+console.log(__dirname);

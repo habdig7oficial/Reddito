@@ -1,7 +1,6 @@
 /** @format */
 
 import { Express, Request, Response } from "express";
-import multer from "multer";
 import { conexao } from "../.config/database";
 
 import { users } from "../.models/users";
@@ -9,7 +8,7 @@ import { recipes } from "../.models/recipes";
 
 import { verifyToken } from "./middleware/Tokens";
 import DelSecret from "./middleware/DeleteSecret";
-import { NULL } from "sass";
+import { M_conf, root } from "../.config/multer";
 
 export default function (app: Express) {
   conexao();
@@ -45,20 +44,43 @@ export default function (app: Express) {
 
     let retorno = await recipes.find({ Email: email });
 
-    console.log(retorno);
+    /* console.log(retorno); */
+
+    for (let i = 0; i < retorno.length; i++) {
+      if (retorno[i].Imagem === undefined) {
+        retorno[i].Imagem = "";
+      } else {
+        retorno[i].Imagem = retorno[i].Imagem?.replace(root, "");
+      }
+    }
 
     res.render("create.ejs", { retorno });
   });
 
-  const upload = multer({ dest: "./assets/Public/E" });
-
   app.post(
     "/create",
-    upload.single("imagem"),
+    M_conf.single("imagem"),
     async function (req: Request, res: Response) {
       let { titulo, descricao, porcoes, ingredientes, preparo } = req.body;
 
       let { jwt, email } = req.cookies;
+
+      let path;
+      if (
+        req.file?.destination == undefined ||
+        req.file?.filename == undefined
+      ) {
+        path = "";
+      } else {
+        path = `${req.file.destination}/${req.file.filename}`;
+      }
+      console.log(path);
+
+      titulo.trim();
+      descricao.trim();
+      porcoes.trim();
+      ingredientes.trim();
+      preparo.trim();
 
       let consulta = await users.findOne({
         Email: email,
@@ -89,11 +111,11 @@ export default function (app: Express) {
         );
       }
 
-      console.log(ingredientes);
+      /*console.log(ingredientes);*/
 
       ingredientes = ingredientes.split(",");
 
-      console.log(ingredientes);
+      /*console.log(ingredientes);*/
 
       try {
         let gravar = await new recipes({
@@ -101,7 +123,7 @@ export default function (app: Express) {
           Email: email,
           Descricao: descricao,
           Porcoes: porcoes,
-          Imagem: null,
+          Imagem: path,
           Ingredientes: ingredientes,
           Preparo: preparo,
         }).save();
@@ -110,12 +132,14 @@ export default function (app: Express) {
         return res.send("nem todos os campos foram preenchidos");
       }
 
+      console.log(req.file);
       res.redirect("/create");
     },
   );
 
   app.post("/update", async function (req: Request, res: Response) {
-    let dados = req.body;
+    let { _id, titulo, descricao, porcoes, imagem, ingredientes, preparo } =
+      req.body;
 
     let { jwt, email } = req.cookies;
 
@@ -139,26 +163,26 @@ export default function (app: Express) {
       return res.send(`Não foi possível assinar o jwt`);
     }
 
-    console.log(dados.ingredientes);
+    /*console.log(dados.ingredientes);*/
 
-    dados.ingredientes = dados.ingredientes.split(",");
+    ingredientes = ingredientes.split(",");
 
-    console.log(dados.ingredientes);
+    /*console.log(dados.ingredientes);*/
 
     try {
       let update = await recipes.findOneAndUpdate(
         {
-          _id: dados._id,
+          _id: _id,
           Email: email,
         },
         {
-          Titulo: dados.titulo,
+          Titulo: titulo,
           Email: email,
-          Descricao: dados.descricao,
-          Porcoes: dados.porcoes,
-          Imagem: dados.imagem,
-          Ingredientes: dados.ingredientes,
-          Preparo: dados.preparo,
+          Descricao: descricao,
+          Porcoes: porcoes,
+          Imagem: imagem,
+          Ingredientes: ingredientes,
+          Preparo: preparo,
 
           Alterado: true,
         },
@@ -172,10 +196,9 @@ export default function (app: Express) {
   });
 
   app.post("/delete", async function (req: Request, res: Response) {
-    let dados = req.body;
+    let { _id } = req.body;
 
-    let jwt = req.cookies.jwt;
-    let email = req.cookies.email;
+    let { jwt, email } = req.cookies;
 
     let consulta = await users.findOne({
       Email: email,
@@ -198,7 +221,7 @@ export default function (app: Express) {
     }
 
     let del = await recipes.findOneAndDelete({
-      _id: dados._id,
+      _id: _id,
       Email: email,
     });
 

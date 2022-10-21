@@ -14,9 +14,11 @@
 
 *.sh
 
-!deploy.sh
+## Mantendo o deploy.sh pra facilitar eu subir na escola
+!deploy.sh 
 
-## Removendo Minhas Notas Pessoais (Mateus)
 
-notas.txt
+## Excluindo Assets com uploads feitos por usuarios
+
+src/assets/Public
 

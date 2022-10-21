@@ -8,7 +8,7 @@ const model = new mongoose.Schema({
   Descricao: { type: String, required: true, maxLength: 200 },
   Tempo: Number,
   Porcoes: Number,
-  Imagem: String,
+  Imagem: String /* Path to image */,
   Ingredientes: Array<String>,
   Preparo: String,
   Alterado: { type: Boolean, default: false },
