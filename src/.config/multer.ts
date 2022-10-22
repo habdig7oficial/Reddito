@@ -42,12 +42,34 @@ export const where = multer.diskStorage({
     )}`;
 
     let sanitaize =
-      path.parse(file.originalname).name.replace(/[^a-zA-Z1-9]/g, "") +
+      path.parse(file.originalname).name.replace(/[^a-zA-Z0-9]/g, "_") +
       id +
-      path.extname(file.originalname).replace(/[^.a-zA-Z1-9]/g, "");
+      path.extname(file.originalname).replace(/[^.a-zA-Z0-9]/g, "");
 
     next(null, sanitaize);
   },
 });
 
-export const M_conf = multer({ storage: where });
+export const M_conf = multer({
+  storage: where,
+
+  fileFilter: function (req, file, next) {
+    let { mimetype } = file;
+
+    let permission = [
+      "image/png",
+      "image/svg+xml",
+      "image/gif",
+      "image/jpeg",
+      "image/jpeg",
+    ];
+
+    for (let i = 0; i < permission.length; i++) {
+      if (mimetype == permission[i]) {
+        next(null, true);
+      }
+    }
+
+    next(null, false);
+  },
+});

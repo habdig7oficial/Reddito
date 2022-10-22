@@ -27,11 +27,29 @@ exports.where = multer_1.default.diskStorage({
     filename: function (req, file, next) {
         return __awaiter(this, void 0, void 0, function* () {
             let id = `__id-${Date.now()}_${Math.floor(Math.random() * (max - min) + min)}`;
-            let sanitaize = path_1.default.parse(file.originalname).name.replace(/[^a-zA-Z1-9]/g, "") +
+            let sanitaize = path_1.default.parse(file.originalname).name.replace(/[^a-zA-Z0-9]/g, "_") +
                 id +
-                path_1.default.extname(file.originalname).replace(/[^.a-zA-Z1-9]/g, "");
+                path_1.default.extname(file.originalname).replace(/[^.a-zA-Z0-9]/g, "");
             next(null, sanitaize);
         });
     },
 });
-exports.M_conf = (0, multer_1.default)({ storage: exports.where });
+exports.M_conf = (0, multer_1.default)({
+    storage: exports.where,
+    fileFilter: function (req, file, next) {
+        let { mimetype } = file;
+        let permission = [
+            "image/png",
+            "image/svg+xml",
+            "image/gif",
+            "image/jpeg",
+            "image/jpeg",
+        ];
+        for (let i = 0; i < permission.length; i++) {
+            if (mimetype == permission[i]) {
+                next(null, true);
+            }
+        }
+        next(null, false);
+    },
+});
