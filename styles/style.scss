@@ -1,0 +1,308 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/*Chamando a fonte: font-family: 'Poppins', $secondary-font;
+/** 
+* Folha de estilo customizada do site...
+* @author: Heloísa Real, Mateus Felipe da Silveira Vieira, Anne dos Santos Ribeiro, Carolina Barbosa Pacífico de Almeida, Julie Missae Sanday, Maria Clara Gomes Gonçalves
+*/
+
+$primary-green: rgba(107, 138, 83);
+$detail-color: rgba(125, 173, 97);
+$contrast-color: rgba(70, 102, 51);
+$variant-color: rgba(107, 148, 83);
+
+$white: rgba(255, 255, 255);
+$gray: rgba(245, 245, 245);
+$black: rgba(0, 0, 0);
+
+$default-font: "Poppins";
+$secondary-font: sans-serif;
+
+::selection {
+  color: $white;
+  background-color: $contrast-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+p,
+li {
+  font-family: $default-font, $secondary-font;
+}
+
+/* Layout */
+.flexFooter {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/** Banner **/
+main {
+  background: url("/img/imagem-fundo.png");
+}
+
+.items {
+  color: $primary-green;
+  opacity: 70%;
+}
+
+.items:hover {
+  /*transform: 1s;*/ /* Olhar Transform */
+  font-family: $default-font, $secondary-font;
+  opacity: 100%;
+}
+
+.destaque {
+  height: 50vh;
+}
+
+.conteudo {
+  background: url("/img/fundo.png");
+  height: 50vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+li.nav-item {
+  padding-left: 20px !important;
+  font-family: $default-font, $secondary-font !important;
+}
+
+li.nav-item .nav-link {
+  color: $primary-green;
+}
+
+li.nav-item .nav-link:hover {
+  transition: 0.4s !important;
+  color: $detail-color !important;
+}
+
+li.nav-item #item1 {
+  color: $contrast-color !important;
+}
+
+.link1 {
+  border: 2px solid !important;
+  border-color: $detail-color !important;
+  color: $detail-color !important;
+  font-family: $default-font, $secondary-font !important;
+}
+
+.link1:hover {
+  transition: 0.4s !important;
+  opacity: 70% !important;
+  font-family: $default-font, $secondary-font !important;
+}
+
+.link2 {
+  background-color: $detail-color;
+  color: $white;
+  font-family: $default-font, $secondary-font;
+}
+
+.link2:hover {
+  animation: chcolor 2.5s infinite !important;
+  color: $white;
+  font-family: $default-font, $secondary-font;
+}
+
+@keyframes chcolor {
+  0%,
+  100% {
+    background-color: $detail-color;
+  }
+  50% {
+    background-color: $variant-color;
+  }
+}
+
+.descricao {
+  border: 20px solid $white !important;
+  background-color: $white !important;
+  font-family: $default-font, $secondary-font !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
+}
+
+/*Banner*/
+.descricaoreddito {
+  border: 20px solid $white;
+  background-color: $white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.titulo {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: $default-font, $secondary-font;
+  color: $contrast-color;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 18px;
+  font-family: $default-font, $secondary-font;
+  font-weight: 600;
+  opacity: 90%;
+  color: $variant-color;
+}
+
+.explicacao {
+  text-align: justify;
+  font-family: $default-font, $secondary-font;
+  margin-top: 10px;
+}
+
+#cadastrereceitas {
+  background-color: $detail-color;
+  color: $white;
+  font-family: $default-font, $secondary-font;
+  border: none;
+}
+
+#cadastrereceitas:hover {
+  /*transform: 0.4s;*/
+  font-size: 20px;
+  opacity: 90%;
+  font-family: $default-font, $secondary-font;
+}
+
+/*Cards*/
+.card-title {
+  font-weight: bold;
+}
+
+.listinha {
+  margin-bottom: 15px;
+}
+
+.configlista {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#maispopulares {
+  font-family: $default-font;
+}
+
+#populares {
+  font-family: $default-font, $secondary-font;
+  font-weight: bold;
+  text-align: center;
+  padding: 50px;
+  font-size: 30px;
+}
+
+.fixedcard {
+  padding: 15px;
+}
+
+.card-group {
+  padding: 100px;
+  padding-top: 0;
+}
+
+#saibamais {
+  font-family: $default-font, $secondary-font;
+}
+
+/*Receita do dia*/
+#dia {
+  font-family: $default-font, $secondary-font;
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+}
+
+/*Footer*/
+footer {
+  padding: 50px 0px;
+  background-color: $primary-green;
+  color: $white;
+  text-align: center;
+}
+
+.textofooter {
+  padding: 15px;
+}
+
+.pmaiordofooter,
+.pmenordofooter {
+  text-align: justify;
+  font-family: $default-font, $secondary-font;
+}
+
+.pmaiordofooter {
+  font-size: 14px;
+}
+
+.pmenordofooter {
+  font-size: 12px;
+  opacity: 90%;
+  letter-spacing: 1px;
+}
+
+#social {
+  margin-bottom: 25px;
+}
+
+.mrc {
+  max-width: 60vh;
+}
+
+.lwi {
+  width: 85px;
+  height: auto;
+}
+
+.instagram,
+.facebook,
+.youtube {
+  margin-bottom: 5px;
+}
+
+.variant-color {
+  color: $variant-color;
+}
+
+.gray {
+  background-color: $gray;
+}
+
+/* Smartphone Landscape */
+@media (min-width: 400px) {
+  /* Rodapé */
+  .flexFooter {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #social {
+    margin: 0;
+  }
+
+  .nav-item {
+    margin-top: 15px;
+  }
+
+  .descricaoreddito {
+    margin: 10px;
+  }
+
+  .collap-ajuste {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
