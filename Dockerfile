@@ -2,7 +2,7 @@
 
 # docker kill $(docker ps -q); docker build . -t habdig7oficial/reddito; docker run -p 7777:7777 -d habdig7oficial/reddito; docker ps --size
 
-# npm run format; docker kill $(docker ps -q); docker compose build --no-cache; docker compose up;
+# npm run format; npm run set;  docker kill $(docker ps -q); docker compose build --no-cache; docker compose up;
 
 
 # Dependencias:
@@ -33,7 +33,7 @@ RUN npm install
 # Remove arquivos desnecessários para produção
 
 #RUN find . -name "*.ts" -delete
-RUN find . -name "*.scss" -delete
+#RUN find . -name "*.scss" -delete
 RUN rmdir ./src/* --ignore-fail-on-non-empty
 
 

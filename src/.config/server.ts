@@ -7,12 +7,12 @@ import cookieParser from "cookie-parser"; /* Lib para trabalhar com cookies para
 import cors from "cors"; /* Lib para trabalhar como api para requisições externas */
 
 /* Importando Rotas manuamente */
-import index from "../routes/test";
+import index from "../routes/index";
 import registro from "../routes/registro";
 import login from "../routes/login";
 import recipes from "../routes/recipes";
 import error from "../routes/error";
-//import multerTeste from "./multer";
+import test from "../routes/test";
 
 const app = express(); /* Instanciando o express */
 const port = process.env.PORT || 7777; /* Definindo a porta de execução */
@@ -20,10 +20,12 @@ const port = process.env.PORT || 7777; /* Definindo a porta de execução */
 app.use(helmet()); /* Utilizando a lib do helmet */
 app.use(compression()); /* Utilizando a lib compression */
 app.use(cookieParser()); /* Utilizando a lib cookieParser */
-app.use(cors({
-  origin: "",
-  optionsSuccessStatus: 200
-}))
+app.use(
+  cors({
+    origin: "*",
+    optionsSuccessStatus: 200,
+  }),
+);
 
 app.set("views", "./src/EJS"); /* Alterando a pasta padrão views para a EJS */
 
@@ -42,6 +44,7 @@ let routes = [
   registro(app),
   login(app),
   recipes(app),
+  test(app), //lembrar de deletar
   error(app),
 ]; /* Executando todas a rotas e passando o express para cada uma */
 

@@ -16,21 +16,29 @@
     <link rel="icon" href="/Images/reddito.png">
 
 </head>
-<body style="background-color: #F5F5F5;">
+<body>
+  <%- include ("./components/nav.ejs") %>
 
-    <%- include ("./components/nav.ejs") %> 
-
-    <li class="nav-item">
-        <a class="btn" id="link1" href="/" role="button">Voltar para a Página Inicial</a>
-    </li>
+  
+  <section class="m-4 p-1">
     <div class="escrita">
-        <h1 class="titulo"><strong>ERROR</strong></h1>
-        <h2 class="subtitulo">Page not found :(</h2>
+      <h1 class="titulo fw-bold">ERRO</h1>
+      <h2 class="subtitulo">Page not found :(</h2>
+      <p class="d-flex justify-content-center">
+        Dentre nossas várias receitas não conseguimos uma para achar a
+        página "<span class="fw-bold variant-color"><%=url%></span>"
+      </p>
+      <div class="d-flex justify-content-center">
+        <a class="btn link1" href="/" role="button">
+          Voltar para a Página Inicial
+        </a>
+      </div>
     </div>
-    <div class="imagemm d-flex justify-content-center">
-        <img src="/Images/Desing - página de erro.svg" alt="Imagem vetoriazada de erro">
+    <div class="imagemm d-flex justify-content-center m-5">
+      <img src="/Images/error404.svg" alt="Imagem vetoriazada de erro" />
     </div>
+  </section>
 
-    <%- include ("./components/footer.ejs") %> 
+  <%- include ("./components/footer.ejs") %> 
 </body>
 </html>

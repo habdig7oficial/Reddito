@@ -5,6 +5,14 @@ import { createToken, verifyToken } from "./middleware/Tokens";
 import { conexao } from "../.config/database";
 
 export default function (app: Express) {
+  app.get("/teste", async function (req: Request, res: Response) {
+    res.send({
+      hello: "world",
+    });
+  });
+
+  /*
+export default function (app: Express) {
   app.get("/", async function (req: Request, res: Response) {
     let tk = await createToken({
       msg: "teste",
@@ -23,7 +31,7 @@ export default function (app: Express) {
 
     res.render("index.ejs", { tk, vef });
   });
-
+*/
   /*
   app.get("/r", async function (req: Request, res: Response) {
     console.log("Criar Redis:");

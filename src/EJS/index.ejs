@@ -26,140 +26,184 @@
   </noscript>
 
   <!-- Banner -->
-  <main class="container-fluid d-flex flex-column justify-content-center align-items-center">
+  <main class="container-fluid d-flex flex-column justify-content-center align-items-center p-5">
     <div class="descricaoreddito">
+      <!--style="margin-top: 100px"-->
       <h1 class="titulo">REDDITO</h1>
       <h2 class="subtitulo">O tempero mais familiar na sua mesa</h2>
-      <p class="explicacao">Um site especial para pessoas amantes da gastronomia, que se divertem ao entrar na cozinha e buscam uma maneira mais fácil de consultar receitas. O Reddito facilitará a sua vida e fazendo com que você nunca mais vai precise se estressar ou se preocupar onde procurar e anotar suas receitas favoritas!</p>
+      <p class="explicacao">
+        Um site especial para pessoas amantes da gastronomia, que se
+        divertem ao entrar na cozinha e buscam uma maneira mais fácil de
+        consultar receitas. O Reddito facilitará a sua vida e fazendo com
+        que você nunca mais se estresse ou se preocupe com onde procurar e
+        anotar suas receitas favoritas!
+      </p>
     </div>
-    <button type="button" class="btn btn-secondary btn-lg" id="cadastrereceitas">Cadastre suas receitas</button>
+    <!-- Cadastre suas receitas, após o cadastro ou login, deve ir direto para a página de novas receitas -->
+    <a href="./cadastro.html" class="link2 btn btn-lg" role="button">
+      <!--style="margin-bottom: 100px"-->
+      Cadastre suas receitas
+    </a>
   </main>
 
   <!--Cards -->
   <!--Entrada para o Backend, receitas mais populares-->
-  <section class="container flex-wrap" id="recpopulares">
-    <h3 id="populares"> Mais Populares</h3>
-    <div class="card-group">
-      <div class="card">
-        <img src="/Images/strogonoffdefrango.png" class="card-img-top" alt="Receita Boilerplate">
-        <div class="card-body">
-          <h5 class="card-title">Nome da Receita</h5>
-          <p class="card-text">Breve descrição do que é</p>
-          <!--Entrada para o Backend, alerta de produtos-->
-          <div class="listinha">
-            <div class="configlista">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-                <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-              </ul>
+  <section class="container" id="recpopulares">
+    <h3 id="populares">Mais Populares</h3>
+    <div class="card-group d-flex flex-wrap m-0 p-0">
+      <div class="card-group d-flex flex-wrap m-5 mt-1 px-2">
+
+        <%
+        let iterations;
+          if(retorno.length > 3){
+            iterations = 3
+          }
+          else{
+            iterations = retorno.length
+          }
+        %>
+
+        <%for(let i = 0; i < iterations; i++){%>
+          <div class="card mx-3">
+            <img
+              src="<%=retorno[i].Imagem%>"
+              class="card-img-top eq"
+              alt=" Foto da receita '<%=retorno[i].Titulo%>'"
+            />
+            <div class="card-body d-flex justify-content-center flex-column m-3">
+              <h5 class="card-title"><%=retorno[i].Titulo%></h5>
+              <p class="card-text">
+                <%=retorno[i].Descricao%>
+              </p>
+              <!-- Entrada para o Backend, alerta de produtos -->
+              <div class="listinha">
+                <div class="configlista">
+                  <p> ⚠️ Ingredientes: </p>
+                  <ul class="list-group list-group-flush">
+                    <%for(let j = 0; j < retorno[i].Ingredientes.length; j++){%>
+                    <li class="list-group-item list-group-item-warning mt-1">
+                      <%=retorno[i].Ingredientes[j]%>
+                    </li>
+                    <%}%>
+
+                  </ul>
+                </div>
+              </div>
+              <a href="./receita1.html" class="link2 btn" role="button">
+                Saiba Mais
+              </a>
             </div>
           </div>
-          <a href="/errorpage.html" class="btn link2" role="button">Saiba Mais</a>
-        </div>
-      </div>
-
-      <div class="m-1"></div>
-      
-      <div class="card">
-        <img src="/Images/lasanha.png" class="card-img-top" alt="Receita Boilerplate">
-        <div class="card-body">
-          <h5 class="card-title">Nome da Receita</h5>
-          <p class="card-text">Breve descrição do que é</p>
-          <!--Entrada para o Backend, alerta de produtos que as pessoas podem  restrições-->
-          <div class="listinha">
-            <div class="configlista">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-                <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-              </ul>
-            </div>
-          </div>
-          <div class="botao"></div>
-          <a href="/errorpage.html" class="btn link2" role="button">Saiba Mais</a>
-        </div>
-      </div>
-
-      <div class="m-1"></div>
-
-      <div class="card">
-        <img src="/Images/escondidinho.png" class="card-img-top" alt="Receita Boilerplate">
-        <div class="card-body">
-          <h5 class="card-title">Nome da receita</h5>
-          <p class="card-text">Breve descrição do que é</p>
-          <!--Entrada para o Backend, alerta de produtos-->
-          <div class="listinha">
-            <div class="configlista">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-                <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-              </ul>
-            </div>
-          </div>
-          <a href="/errorpage.html" class="btn link2" role="button">Saiba Mais</a>
-        </div>
+        <%}%>
       </div>
     </div>
   </section>
-  
+
   <!--Receita do dia-->
   <section id="recdia">
     <div>
       <h3 id="dia">Receita do dia</h3>
       <div class="d-flex justify-content-center mb-5">
         <div class="fixedcard">
-        <div class="card mb-1 div-max" >
-          <div class="row">
-            <div class="col-md-0">
-              <img  src="/Images/receita_do_dia.png" class="img-fluid rounded-start div-max" alt="Receita Boilerplate">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Nome da Receita</h5>
-                
-                <p class="card-text">Breve descrição da receita</p>
-                <div class="listinha">
-                  <div class="configlista">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-                      <li class="list-group-item list-group-item-warning">⚠️ Contém TalProduto</li>
-                    </ul>
+          <div class="card mb-1 mrc">
+            <div class="row">
+              <div class="col-md-0">
+                <img
+                  src="/Images/receita_do_dia.png"
+                  class="img-fluid rounded-start"
+                  alt="Receita do Dia | Nome da receita"
+                />
+              </div>
+              <div class="mx-1">
+                <div class="card-body d-flex justify-content-center flex-column ">
+                  <h5 class="card-title">Tacos</h5>
+
+                  <p class="card-text">
+                    Receita de taco mexicano com recheio de carne moída
+                    fácil para você servir no lanche ou substituir uma
+                    refeição.
+                  </p>
+                  <div class="listinha">
+                    <div class="configlista">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-warning">
+                          ⚠️ Contém Trigo
+                        </li>
+                        <li class="list-group-item list-group-item-warning">
+                          ⚠️ Contém Pimenta
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!--Aqui temos uma entrada para o Backend, com atualização da receita/opcional-->
-                <p class="card-text"><small class="text-muted">Publicada a 30 minutos</small></p>
-                <a href="#" class="btn link2" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver Receita</a>
-          
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Faça seu cadastro ou Login</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Para ter acesso a esse conteúdo, faça o seu cadastro, ou se já tem uma conta, faça seu login!</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <!--Aqui temos uma entrada para o Backend, com atualização da receita/opcional-->
+                  <p class="card-text">
+                    <small class="text-muted">
+                      Publicada a 30 minutos
+                    </small>
+                  </p>
+                  <a
+                    href="./ver"
+                    class="link2 btn"
+                    role="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                  >
+                    Ver Receita
+                  </a>
+
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    id="staticBackdrop"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    aria-labelledby="staticBackdropLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5
+                            class="modal-title"
+                            id="staticBackdropLabel"
+                          >
+                            Faça seu cadastro ou Login
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>
+                            Para ter acesso a esse conteúdo, faça o seu
+                            cadastro, ou se já tem uma conta, faça seu
+                            login!
+                          </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Fechar
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
   </section>
-
-
   <%- include ("./components/footer.ejs") %>
-
-
 
 </body>
 </html>

@@ -1,35 +1,56 @@
-  <!-- Navbar -->
-  <nav class="nav navbar navbar-expand-lg bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img class="logo" src="/Images/logohomepage.png" alt="Logo do Reddito" >
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0 collap-ajuste">
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/Images/logohomepage.png" alt="Logo" class="lwi" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="flex-wrap collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="collap-ajuste flex-wrap navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item m-1">
+          <a class="btn link1" href="./login.html" role="button">
+            Entrar
+          </a>
+        </li>
+        <li class="nav-item m-1">
+          <a class="btn link2" href="./cadastro.html" role="button">
+            Cadastre-se
+          </a>
+        </li>
+      </ul>
+      <div class="opcoesmenu">
+        <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a class="btn link1"  href="/errorpage.html" role="button">Entrar</a>
+            <a
+              class="nav-link active items"
+              id="item1"
+              aria-current="page"
+              href="#recpopulares"
+            >
+              Receitas Populares
+            </a>
           </li>
           <li class="nav-item">
-            <a class="btn link2" href="/errorpage.html" role="button">Cadastre-se</a>
+            <a class="nav-link items" href="#recdia">
+              Receita do Dia
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link items" href="./errorpage.html">
+              Página de erro
+            </a>
           </li>
         </ul>
-        <div class="opcoesmenu">
-          <ul class="nav justify-content-center">
-            <li class="nav-item">
-              <a class="nav-link active item" aria-current="page" href="#recpopulares" id="item1">Receitas Populares</a>
-            </li>
-            <li class="nav-item item">
-              <a class="nav-link" href="#recdia" id="item2">Receita do Dia</a>
-            </li>
-            <li class="nav-item item">
-              <a class="nav-link" href="/errorpage.html" id="item3">Sobre nós</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

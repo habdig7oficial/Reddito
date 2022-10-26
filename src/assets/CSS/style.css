@@ -1,8 +1,6 @@
 @charset "UTF-8";
 /** @format */
-/* Resetando as configurações por segurança */
-/* Importando bootstrap*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 /**
  * /* http://meyerweb.com/eric/tools/css/reset/ 
  *    v2.0 | 20110126
@@ -7163,7 +7161,7 @@ textarea.form-control-lg {
   display: table-cell !important;
 }
 
-.d-flex, .flexFooter {
+.d-flex {
   display: flex !important;
 }
 
@@ -7464,7 +7462,7 @@ textarea.form-control-lg {
   flex: 1 1 auto !important;
 }
 
-.flex-row, .flexFooter {
+.flex-row {
   flex-direction: row !important;
 }
 
@@ -10958,16 +10956,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/*Chamando a fonte: font-family: 'Poppins', sans-serif;
-
+/*Chamando a fonte: font-family: 'Poppins', $secondary-font;
 /** 
 * Folha de estilo customizada do site...
-* @author: Heloísa Real, Anne dos Santos Ribeiro, Carolina Barbosa Pacífico de Almeida,  Julie Missae Sanday, Maria Clara Gomes Gonçalves, Mateus Felipe da Silveira Vieira 
+* @author: Heloísa Real, Mateus Felipe da Silveira Vieira, Anne dos Santos Ribeiro, Carolina Barbosa Pacífico de Almeida, Julie Missae Sanday, Maria Clara Gomes Gonçalves
 */
-/* Criando variaveis costumizadas*/
 ::selection {
-  color: #fff;
-  background-color: #466633;
+  color: rgb(255, 255, 255);
+  background-color: rgb(70, 102, 51);
 }
 
 h1,
@@ -10975,62 +10971,70 @@ h2,
 h3,
 h4,
 h5,
-h6,
-li,
+h5,
 p,
-ul {
-  font-family: "Poppins", cursive;
+li {
+  font-family: "Poppins", sans-serif;
 }
 
 /* Layout */
-/** Banner **/
-main {
-  background: url("../Images/imagem-fundo.png");
-  height: 50px;
-  background-size: cover;
-  background-position: center;
+.flexFooter {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.item {
-  color: #6b8a53;
+/** Banner **/
+main {
+  background: url("/Images/Banner.jpg");
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+.items {
+  color: rgb(107, 138, 83);
   opacity: 70%;
 }
 
-.item:hover {
-  transform: 1s;
+.items:hover {
+  /*transform: 1s;*/ /* Olhar Transform */
   font-family: "Poppins", sans-serif;
   opacity: 100%;
 }
 
+.destaque {
+  height: 50vh;
+}
+
 .conteudo {
-  background: url("../Images/fundo.png");
+  background: url("/Images/fundo.png");
   height: 50vh;
   background-size: cover;
   background-attachment: fixed;
 }
 
 li.nav-item {
-  padding-left: 20px;
-  font-family: "Poppins", sans-serif;
+  padding-left: 20px !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 li.nav-item .nav-link {
-  color: #6b8a53;
+  color: rgb(107, 138, 83);
 }
 
 li.nav-item .nav-link:hover {
-  color: #7dad61 !important;
+  transition: 0.4s !important;
+  color: rgb(125, 173, 97) !important;
 }
 
 li.nav-item #item1 {
-  color: #466633 !important;
+  color: rgb(70, 102, 51) !important;
 }
 
 .link1 {
   border: 2px solid !important;
-  border-color: #7dad61 !important;
-  color: #7dad61 !important;
-  font-family: "Poppins", sans-serif;
+  border-color: rgb(125, 173, 97) !important;
+  color: rgb(125, 173, 97) !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .link1:hover {
@@ -11040,32 +11044,40 @@ li.nav-item #item1 {
 }
 
 .link2 {
-  background-color: #7dad61 !important;
-  color: #fff !important;
-  font-family: "Poppins", sans-serif !important;
+  background-color: rgb(125, 173, 97);
+  color: rgb(255, 255, 255);
+  font-family: "Poppins", sans-serif;
 }
 
 .link2:hover {
-  background-color: #7dad61 !important;
-  transition: 0.4s !important;
-  opacity: 70% !important;
-  font-family: "Poppins", sans-serif !important;
+  animation: chcolor 2.5s infinite !important;
+  color: rgb(255, 255, 255) !important;
+  font-family: "Poppins", sans-serif;
 }
 
+@keyframes chcolor {
+  0%, 100% {
+    background-color: rgb(125, 173, 97);
+  }
+  50% {
+    background-color: rgb(107, 148, 83);
+  }
+}
 .descricao {
-  border: 20px solid #fff;
-  background-color: #fff;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.875rem;
-  font-weight: bold;
+  border: 20px solid rgb(255, 255, 255) !important;
+  background-color: rgb(255, 255, 255) !important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
 }
 
 /*Banner*/
 .descricaoreddito {
-  border: 20px solid #fff;
-  background-color: #fff;
+  border: 20px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 15px;
+  margin-bottom: 15px;
 }
 
 .titulo {
@@ -11073,16 +11085,16 @@ li.nav-item #item1 {
   font-weight: bold;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #466633;
+  color: rgb(70, 102, 51);
 }
 
 .subtitulo {
   text-align: center;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   opacity: 90%;
-  color: #6b9453;
+  color: rgb(107, 148, 83);
 }
 
 .explicacao {
@@ -11091,24 +11103,16 @@ li.nav-item #item1 {
   margin-top: 10px;
 }
 
-.logo {
-  width: 85px;
-}
-
-.div-max {
-  max-width: 60vh;
-}
-
 #cadastrereceitas {
-  background-color: #7dad61;
-  color: #fff;
+  background-color: rgb(125, 173, 97);
+  color: rgb(255, 255, 255);
   font-family: "Poppins", sans-serif;
   border: none;
 }
 
 #cadastrereceitas:hover {
-  transform: 0.4s;
-  font-size: 1.25rem;
+  /*transform: 0.4s;*/
+  font-size: 20px;
   opacity: 90%;
   font-family: "Poppins", sans-serif;
 }
@@ -11132,7 +11136,7 @@ li.nav-item #item1 {
 }
 
 #populares {
-  font-family: "Poppins" sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   text-align: center;
   padding: 50px;
@@ -11148,13 +11152,17 @@ li.nav-item #item1 {
   padding-top: 0;
 }
 
+.eq {
+  max-height: 50rem;
+}
+
 #saibamais {
-  font-family: "Poppins" sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /*Receita do dia*/
 #dia {
-  font-family: "Poppins" sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   text-align: center;
   font-size: 30px;
@@ -11164,8 +11172,8 @@ li.nav-item #item1 {
 /*Footer*/
 footer {
   padding: 50px 0px;
-  background-color: #6b8a53;
-  color: #fff;
+  background-color: rgb(107, 138, 83);
+  color: rgb(255, 255, 255);
   text-align: center;
 }
 
@@ -11193,28 +11201,35 @@ footer {
   margin-bottom: 25px;
 }
 
+.mrc {
+  max-width: 60vh;
+}
+
+.lwi {
+  width: 85px;
+  height: auto;
+}
+
 .instagram,
 .facebook,
 .youtube {
   margin-bottom: 5px;
 }
 
+.variant-color {
+  color: rgb(107, 148, 83);
+}
+
+.gray {
+  background-color: rgb(245, 245, 245);
+}
+
 /* Smartphone Landscape */
 @media (min-width: 400px) {
-  /*Banner*/
-  main {
-    height: 100vh;
-  }
-  .collap-ajuste {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
-  }
   /* Rodapé */
   .flexFooter {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
   #social {
@@ -11225,6 +11240,17 @@ footer {
   }
   .descricaoreddito {
     margin: 10px;
+  }
+  .collap-ajuste {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 400px) and (max-width: 983px) {
+  .card-group {
+    flex-direction: column;
   }
 }
 

@@ -10,25 +10,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Tokens_1 = require("./middleware/Tokens");
 function default_1(app) {
-    app.get("/", function (req, res) {
+    app.get("/teste", function (req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let tk = yield (0, Tokens_1.createToken)({
-                msg: "teste",
-                secret: "secret",
-                time: "1min",
+            res.send({
+                hello: "world",
             });
-            if (tk == undefined) {
-                return res.send("err");
-            }
-            let vef = yield (0, Tokens_1.verifyToken)({
-                analise_token: tk,
-                secret: "secret",
-            });
-            res.render("index.ejs", { tk, vef });
         });
     });
+    /*
+  export default function (app: Express) {
+    app.get("/", async function (req: Request, res: Response) {
+      let tk = await createToken({
+        msg: "teste",
+        secret: "secret",
+        time: "1min",
+      });
+  
+      if (tk == undefined) {
+        return res.send("err");
+      }
+  
+      let vef = await verifyToken({
+        analise_token: tk,
+        secret: "secret",
+      });
+  
+      res.render("index.ejs", { tk, vef });
+    });
+  */
     /*
     app.get("/r", async function (req: Request, res: Response) {
       console.log("Criar Redis:");
