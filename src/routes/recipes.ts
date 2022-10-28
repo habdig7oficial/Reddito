@@ -1,6 +1,6 @@
 /** @format */
 
-import { Express, Request, Response } from "express";
+import type { Express, Request, Response } from "express";
 import { conexao } from "../.config/database";
 
 import { users } from "../.models/users";

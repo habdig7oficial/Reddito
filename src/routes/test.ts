@@ -1,6 +1,6 @@
 /** @format */
 
-import { Express, Request, Response, text } from "express";
+import type { Express, Request, Response, text } from "express";
 import { createToken, verifyToken } from "./middleware/Tokens";
 import { conexao } from "../.config/database";
 

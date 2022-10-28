@@ -1,6 +1,6 @@
 /** @format */
 
-import { Express, Request, Response } from "express";
+import type { Express, Request, Response } from "express";
 import argon2 from "argon2";
 import { conexao } from "../.config/database";
 import { users } from "../.models/users";
