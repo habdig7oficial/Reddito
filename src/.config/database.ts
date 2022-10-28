@@ -1,9 +1,6 @@
 /** @format */
 
 import mongoose from "mongoose";
-import dotenv from "dotenv"; /* Importando leitor de variáveis de ambiente*/
-
-dotenv.config(); /* Configurando o leitor */
 
 export const conexao = async () => {
   let localdb = "mongodb://localhost/reddito-teste"; /* Banco de Dados Local */

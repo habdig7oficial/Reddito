@@ -15,8 +15,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.conexao = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const dotenv_1 = __importDefault(require("dotenv")); /* Importando leitor de variáveis de ambiente*/
-dotenv_1.default.config(); /* Configurando o leitor */
 const conexao = () => __awaiter(void 0, void 0, void 0, function* () {
     let localdb = "mongodb://localhost/reddito-teste"; /* Banco de Dados Local */
     let conexao_string = process.env.CONEXAO_STRING || localdb;

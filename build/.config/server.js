@@ -9,7 +9,6 @@ const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet")); /* Lib pra proteger o site contra vunerabilidades conhecidas, recomendado pela documentação: https://expressjs.com/pt-br/advanced/best-practice-security.html */
 const compression_1 = __importDefault(require("compression")); /* Lib pra melhorar a performace com o gzip comprimindo dados, recomendado pela documentação: https://expressjs.com/pt-br/advanced/best-practice-performance.html*/
 const cookie_parser_1 = __importDefault(require("cookie-parser")); /* Lib para trabalhar com cookies para aumentar a segurança */
-const cors_1 = __importDefault(require("cors")); /* Lib para trabalhar como api para requisições externas */
 /* Importando Rotas manuamente */
 const index_1 = __importDefault(require("../routes/index"));
 const registro_1 = __importDefault(require("../routes/registro"));
@@ -24,10 +23,16 @@ exports.port = port;
 app.use((0, helmet_1.default)()); /* Utilizando a lib do helmet */
 app.use((0, compression_1.default)()); /* Utilizando a lib compression */
 app.use((0, cookie_parser_1.default)()); /* Utilizando a lib cookieParser */
-app.use((0, cors_1.default)({
+/*
+inutil sem api
+
+app.use(
+  cors({
     origin: "*",
     optionsSuccessStatus: 200,
-}));
+  }),
+);
+*/
 app.set("views", "./src/EJS"); /* Alterando a pasta padrão views para a EJS */
 app.use(express_1.default.urlencoded({ extended: false })); /* Setando um parseador de Json */
 let statics = [

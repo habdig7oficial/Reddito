@@ -20,12 +20,17 @@ const port = process.env.PORT || 7777; /* Definindo a porta de execução */
 app.use(helmet()); /* Utilizando a lib do helmet */
 app.use(compression()); /* Utilizando a lib compression */
 app.use(cookieParser()); /* Utilizando a lib cookieParser */
+
+/*
+inutil sem api
+
 app.use(
   cors({
     origin: "*",
     optionsSuccessStatus: 200,
   }),
 );
+*/
 
 app.set("views", "./src/EJS"); /* Alterando a pasta padrão views para a EJS */
 
