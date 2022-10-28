@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Um site de cadastro de receitas pessoais, possibilitando a acessibilidade dos usuários de forma simples e intuitiva. Também promovemos o compartilhamento delas e a opção de dar notas e observações para as receitas feitas.",
   "main": "./build/trigger.js",
+  "engines": {
+    "node": "16.17.0",
+    "npm": "8.15.0"
+  },
   "scripts": {
     "legacy-postinstall": "node ./src/assets/SCSS/.link-boot.js",
     "start": "node ./build/trigger.js",
