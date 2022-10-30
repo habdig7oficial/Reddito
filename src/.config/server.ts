@@ -12,7 +12,7 @@ import registro from "../routes/registro";
 import login from "../routes/login";
 import recipes from "../routes/recipes";
 import error from "../routes/error";
-import test from "../routes/test";
+import map from "../routes/map";
 
 const app = express(); /* Instanciando o express */
 const port = process.env.PORT || 7777; /* Definindo a porta de execução */
@@ -49,7 +49,7 @@ let routes = [
   registro(app),
   login(app),
   recipes(app),
-  test(app), //lembrar de deletar
+  map(app), //lembrar de deletar
   error(app),
 ]; /* Executando todas a rotas e passando o express para cada uma */
 

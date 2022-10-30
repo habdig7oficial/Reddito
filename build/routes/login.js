@@ -27,15 +27,15 @@ function default_1(app) {
     });
     app.post("/login", function (req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let dados = req.body;
+            let { email, password } = req.body;
             let reqIp = req.ip;
-            dados.email = dados.email.trim();
-            dados.password = dados.password.trim();
+            email = email.trim();
+            password = password.trim();
             let exists = yield users_1.users.findOne({
-                Email: dados.email,
+                Email: email,
             });
             if (exists === null) {
-                return res.send(`O email ${dados.email} não está cadastrado`);
+                return res.send(`O email ${email} não está cadastrado`);
             }
             else if (exists.Password == null) {
                 return res.send(`Um erro inesperado aconteceu`);
@@ -55,7 +55,7 @@ function default_1(app) {
             }
             let result;
             try {
-                result = yield argon2_1.default.verify(exists.Password, dados.password);
+                result = yield argon2_1.default.verify(exists.Password, password);
             }
             catch (err) {
                 console.error(err);

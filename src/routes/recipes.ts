@@ -3,12 +3,13 @@
 import type { Express, Request, Response } from "express";
 import { conexao } from "../.config/database";
 
+import { M_conf, root } from "../.config/multer";
 import { users } from "../.models/users";
 import { recipes } from "../.models/recipes";
 
 import { verifyToken } from "./middleware/Tokens";
 import DelSecret from "./middleware/DeleteSecret";
-import { M_conf, root } from "../.config/multer";
+import GabargeCollector from "./middleware/GabargeCollector";
 
 export default function (app: Express) {
   conexao();
@@ -39,7 +40,7 @@ export default function (app: Express) {
 
     if (result.verified == false) {
       DelSecret(res);
-      return res.send(`Não foi possivel assinar sua autenticação`);
+      return res.redirect("/login");
     }
 
     let retorno = await recipes.find({ Email: email });
@@ -88,6 +89,7 @@ export default function (app: Express) {
 
       if (consulta === null) {
         DelSecret(res);
+        await GabargeCollector(path);
         return res.send(`Não foi possivel encontrar o email ${email}`);
       }
 
@@ -99,12 +101,15 @@ export default function (app: Express) {
       } catch (err) {
         console.error(err);
         DelSecret(res);
+        console.log(path);
+        await GabargeCollector(path);
         return res.send(`Não foi possível assinar o jwt`);
       }
 
       let lenthP = 200;
 
       if (descricao.length > lenthP) {
+        await GabargeCollector(path);
         //lembrar de adicionar data
         return res.send(
           `O comprimento da descrição é maior que o permitido. ${descricao.length} > ${lenthP}`,
@@ -129,6 +134,7 @@ export default function (app: Express) {
         }).save();
       } catch (err) {
         console.log(err);
+        await GabargeCollector(path);
         return res.send("nem todos os campos foram preenchidos");
       }
 
@@ -138,8 +144,7 @@ export default function (app: Express) {
   );
 
   app.post("/update", async function (req: Request, res: Response) {
-    let { _id, titulo, descricao, porcoes, imagem, ingredientes, preparo } =
-      req.body;
+    let { _id, titulo, descricao, porcoes, ingredientes, preparo } = req.body;
 
     let { jwt, email } = req.cookies;
 
@@ -147,8 +152,15 @@ export default function (app: Express) {
       Email: email,
     });
 
+    let path = "";
+
+    if (req.file?.path != undefined || req.file?.path != null) {
+      path = req.file?.path;
+    }
+
     if (consulta === null) {
       DelSecret(res);
+      await GabargeCollector(path);
       return res.send(`Não foi possivel encontrar o email ${email}`);
     }
 
@@ -160,6 +172,7 @@ export default function (app: Express) {
     } catch (err) {
       console.error(err);
       DelSecret(res);
+      await GabargeCollector(path);
       return res.send(`Não foi possível assinar o jwt`);
     }
 
@@ -180,7 +193,7 @@ export default function (app: Express) {
           Email: email,
           Descricao: descricao,
           Porcoes: porcoes,
-          Imagem: imagem,
+          Imagem: path,
           Ingredientes: ingredientes,
           Preparo: preparo,
 
@@ -191,6 +204,8 @@ export default function (app: Express) {
       console.log(err);
       return res.send("campos essenciais não foram preenchidos");
     }
+
+    //await GabargeCollector(await recipes.findOne());
 
     res.redirect("/create");
   });
@@ -224,6 +239,13 @@ export default function (app: Express) {
       _id: _id,
       Email: email,
     });
+
+    let Imagem: string | null = await recipes.findOne({
+      _id: _id,
+      Email: email,
+    });
+
+    //await GabargeCollector()
 
     res.redirect("/create");
   });

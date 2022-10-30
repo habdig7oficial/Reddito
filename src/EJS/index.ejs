@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reddito | Home Page</title>
-  <meta name="description" content="Descrever o site (máximo 150 caracteres)">
+  <meta name="description" content="Reddito Homepage">
 
   <!-- CSS Customizado + bootsrap -->
   <link rel="stylesheet" href="/CSS/style.css">
   
   <!-- JS Part of Bootstrap-->
-  <script type="text/javascript" src="JS/bootstrap/bootstrap.js"></script>
+  <script src="JS/bootstrap/bootstrap.js"></script>
 
   <!-- Favicon -->
   <link rel="icon" href="/Images/reddito.png">
@@ -26,7 +26,7 @@
   </noscript>
 
   <!-- Banner -->
-  <main class="container-fluid d-flex flex-column justify-content-center align-items-center p-5">
+  <main class="main-index container-fluid d-flex flex-column justify-content-center align-items-center p-5">
     <div class="descricaoreddito">
       <!--style="margin-top: 100px"-->
       <h1 class="titulo">REDDITO</h1>
@@ -40,7 +40,7 @@
       </p>
     </div>
     <!-- Cadastre suas receitas, após o cadastro ou login, deve ir direto para a página de novas receitas -->
-    <a href="./cadastro.html" class="link2 btn btn-lg" role="button">
+    <a href="/registro" class="link2 btn btn-lg" role="button">
       <!--style="margin-bottom: 100px"-->
       Cadastre suas receitas
     </a>
@@ -61,6 +61,15 @@
           else{
             iterations = retorno.length
           }
+        %>
+
+        <%
+        let value;
+
+          min = Math.ceil(0);
+          max = Math.floor(retorno.length);
+          value = Math.floor(Math.random() * (max - min + 1)) + min;
+        
         %>
 
         <%for(let i = 0; i < iterations; i++){%>
@@ -99,46 +108,45 @@
     </div>
   </section>
 
-  <!--Receita do dia-->
+  <!--Receita Aleatória-->
+  
   <section id="recdia">
     <div>
-      <h3 id="dia">Receita do dia</h3>
+      <h3 id="dia">Receita Aleatória</h3>
       <div class="d-flex justify-content-center mb-5">
         <div class="fixedcard">
           <div class="card mb-1 mrc">
             <div class="row">
               <div class="col-md-0">
                 <img
-                  src="/Images/receita_do_dia.png"
+                  src="<%=retorno[value].Imagem%>"
                   class="img-fluid rounded-start"
-                  alt="Receita do Dia | Nome da receita"
+                  alt="(Receita Aleatória) '<%=retorno[value].Titulo%>' "
                 />
               </div>
               <div class="mx-1">
                 <div class="card-body d-flex justify-content-center flex-column ">
-                  <h5 class="card-title">Tacos</h5>
+                  <h5 class="card-title"><%=retorno[value].Titulo%></h5>
 
                   <p class="card-text">
-                    Receita de taco mexicano com recheio de carne moída
-                    fácil para você servir no lanche ou substituir uma
-                    refeição.
+                    <%=retorno[value].Descricao%>
                   </p>
                   <div class="listinha">
                     <div class="configlista">
+                      <p> ⚠️ Ingredientes: </p>
                       <ul class="list-group list-group-flush">
+                        <%for(let j = 0; j < retorno[value].Ingredientes.length; j++){%>
                         <li class="list-group-item list-group-item-warning">
-                          ⚠️ Contém Trigo
+                          <%=retorno[value].Ingredientes[j]%>
                         </li>
-                        <li class="list-group-item list-group-item-warning">
-                          ⚠️ Contém Pimenta
-                        </li>
+                        <%}%>
                       </ul>
                     </div>
                   </div>
                   <!--Aqui temos uma entrada para o Backend, com atualização da receita/opcional-->
                   <p class="card-text">
                     <small class="text-muted">
-                      Publicada a 30 minutos
+                      Publicada em <%=retorno[value].Data_de_cadastro.toISOString().slice(0,10)%>
                     </small>
                   </p>
                   <a

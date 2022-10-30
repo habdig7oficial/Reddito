@@ -14,11 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = require("../.config/database");
+const multer_1 = require("../.config/multer");
 const users_1 = require("../.models/users");
 const recipes_1 = require("../.models/recipes");
 const Tokens_1 = require("./middleware/Tokens");
 const DeleteSecret_1 = __importDefault(require("./middleware/DeleteSecret"));
-const multer_1 = require("../.config/multer");
+const GabargeCollector_1 = __importDefault(require("./middleware/GabargeCollector"));
 function default_1(app) {
     (0, database_1.conexao)();
     app.get("/create", function (req, res) {
@@ -45,7 +46,7 @@ function default_1(app) {
             }
             if (result.verified == false) {
                 (0, DeleteSecret_1.default)(res);
-                return res.send(`Não foi possivel assinar sua autenticação`);
+                return res.redirect("/login");
             }
             let retorno = yield recipes_1.recipes.find({ Email: email });
             /* console.log(retorno); */
@@ -84,6 +85,7 @@ function default_1(app) {
             });
             if (consulta === null) {
                 (0, DeleteSecret_1.default)(res);
+                yield (0, GabargeCollector_1.default)(path);
                 return res.send(`Não foi possivel encontrar o email ${email}`);
             }
             try {
@@ -95,10 +97,13 @@ function default_1(app) {
             catch (err) {
                 console.error(err);
                 (0, DeleteSecret_1.default)(res);
+                console.log(path);
+                yield (0, GabargeCollector_1.default)(path);
                 return res.send(`Não foi possível assinar o jwt`);
             }
             let lenthP = 200;
             if (descricao.length > lenthP) {
+                yield (0, GabargeCollector_1.default)(path);
                 //lembrar de adicionar data
                 return res.send(`O comprimento da descrição é maior que o permitido. ${descricao.length} > ${lenthP}`);
             }
@@ -118,6 +123,7 @@ function default_1(app) {
             }
             catch (err) {
                 console.log(err);
+                yield (0, GabargeCollector_1.default)(path);
                 return res.send("nem todos os campos foram preenchidos");
             }
             console.log(req.file);
@@ -125,14 +131,20 @@ function default_1(app) {
         });
     });
     app.post("/update", function (req, res) {
+        var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function* () {
-            let { _id, titulo, descricao, porcoes, imagem, ingredientes, preparo } = req.body;
+            let { _id, titulo, descricao, porcoes, ingredientes, preparo } = req.body;
             let { jwt, email } = req.cookies;
             let consulta = yield users_1.users.findOne({
                 Email: email,
             });
+            let path = "";
+            if (((_a = req.file) === null || _a === void 0 ? void 0 : _a.path) != undefined || ((_b = req.file) === null || _b === void 0 ? void 0 : _b.path) != null) {
+                path = (_c = req.file) === null || _c === void 0 ? void 0 : _c.path;
+            }
             if (consulta === null) {
                 (0, DeleteSecret_1.default)(res);
+                yield (0, GabargeCollector_1.default)(path);
                 return res.send(`Não foi possivel encontrar o email ${email}`);
             }
             try {
@@ -144,6 +156,7 @@ function default_1(app) {
             catch (err) {
                 console.error(err);
                 (0, DeleteSecret_1.default)(res);
+                yield (0, GabargeCollector_1.default)(path);
                 return res.send(`Não foi possível assinar o jwt`);
             }
             /*console.log(dados.ingredientes);*/
@@ -158,7 +171,7 @@ function default_1(app) {
                     Email: email,
                     Descricao: descricao,
                     Porcoes: porcoes,
-                    Imagem: imagem,
+                    Imagem: path,
                     Ingredientes: ingredientes,
                     Preparo: preparo,
                     Alterado: true,
@@ -168,6 +181,7 @@ function default_1(app) {
                 console.log(err);
                 return res.send("campos essenciais não foram preenchidos");
             }
+            //await GabargeCollector(await recipes.findOne());
             res.redirect("/create");
         });
     });
@@ -197,6 +211,11 @@ function default_1(app) {
                 _id: _id,
                 Email: email,
             });
+            let Imagem = yield recipes_1.recipes.findOne({
+                _id: _id,
+                Email: email,
+            });
+            //await GabargeCollector()
             res.redirect("/create");
         });
     });

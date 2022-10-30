@@ -38,6 +38,14 @@ li {
   font-family: $default-font, $secondary-font;
 }
 
+a {
+  color: $contrast-color;
+}
+a:hover {
+  transition: 1s;
+  color: $variant-color;
+}
+
 /* Layout */
 .flexFooter {
   display: flex;
@@ -45,10 +53,14 @@ li {
 }
 
 /** Banner **/
-main {
-  background: url("/Images/Banner.jpg");
+.main-index {
+  background: url("/Images/Banner.jpg") !important;
   background-size: contain;
   background-attachment: fixed;
+}
+
+main {
+  background-color: $primary-green;
 }
 
 .items {

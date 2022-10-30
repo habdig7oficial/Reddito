@@ -58,7 +58,7 @@ function default_1(app) {
                 Email: dados.email,
                 Password: dados.password,
             }).save();
-            res.send(dados);
+            res.redirect("/login");
         });
     });
 }

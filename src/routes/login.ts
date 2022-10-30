@@ -20,19 +20,19 @@ export default function (app: Express) {
   });
 
   app.post("/login", async function (req: Request, res: Response) {
-    let dados: dados = req.body;
+    let { email, password }: dados = req.body;
 
     let reqIp = req.ip;
 
-    dados.email = dados.email.trim();
-    dados.password = dados.password.trim();
+    email = email.trim();
+    password = password.trim();
 
     let exists = await users.findOne({
-      Email: dados.email,
+      Email: email,
     });
 
     if (exists === null) {
-      return res.send(`O email ${dados.email} não está cadastrado`);
+      return res.send(`O email ${email} não está cadastrado`);
     } else if (exists.Password == null) {
       return res.send(`Um erro inesperado aconteceu`);
     }
@@ -58,7 +58,7 @@ export default function (app: Express) {
     let result;
 
     try {
-      result = await argon2.verify(exists.Password, dados.password);
+      result = await argon2.verify(exists.Password, password);
     } catch (err) {
       console.error(err);
       return res.send(`Um erro inesperado aconeceu`);

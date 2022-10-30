@@ -59,6 +59,6 @@ export default function (app: Express) {
       Password: dados.password,
     }).save();
 
-    res.send(dados);
+    res.redirect("/login");
   });
 }

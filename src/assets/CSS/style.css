@@ -10977,6 +10977,15 @@ li {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  color: rgb(70, 102, 51);
+}
+
+a:hover {
+  transition: 1s;
+  color: rgb(107, 148, 83);
+}
+
 /* Layout */
 .flexFooter {
   display: flex;
@@ -10984,10 +10993,14 @@ li {
 }
 
 /** Banner **/
-main {
-  background: url("/Images/Banner.jpg");
+.main-index {
+  background: url("/Images/Banner.jpg") !important;
   background-size: contain;
   background-attachment: fixed;
+}
+
+main {
+  background-color: rgb(107, 138, 83);
 }
 
 .items {

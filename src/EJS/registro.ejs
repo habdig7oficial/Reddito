@@ -1,19 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/registro" method="post">
+<!-- @format -->
 
-        <input type="text" name="nome" id="">
-        <input type="email" name="email" id="">
-        <input type="password" name="password" id="">
-        <input type="password" name="confirm" id="">
-        <input type="submit" value="submit">
-    </form>
-</body>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0">
+    <title>Título da homepage</title>
+    <meta
+      name="description"
+      content="Reddito Página de Cadastro, cadastre-se já e conheça receitas maravilhosas">
+
+  <!-- CSS Customizado + bootsrap -->
+  <link rel="stylesheet" href="/CSS/style.css">
+  
+  <!-- JS Part of Bootstrap-->
+  <script src="JS/bootstrap/bootstrap.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/Images/reddito.png">
+  </head>
+
+  <body class="gray">
+    <!-- Menu -->
+    <%- include ("./components/nav.ejs")%>
+
+    <!-- Formulário -->
+    <main
+      class="container-fluid d-flex flex-column justify-content-top align-items-center">
+      <div class="descricaoreddito mt-5 mb-5">
+        <h1 class="titulo">CADASTRE-SE</h1>
+        <h2 class="subtitulo">
+          Preencha com as sua informações pessoais para finalizar o cadastro.
+        </h2>
+        <form action="/registro" method="post">
+          <!-- Nome Completo -->
+          <div class="form-row">
+            <div class="form-group col mt-2">
+              <label for="inputEmail4">Nome Completo:</label>
+              <input
+                type="text"
+                name="nome"
+                class="form-control"
+                id="inputEmail4"
+                required />
+            </div>
+            <!-- Email -->
+            <div class="form-group col mt-2">
+              <label for="inputEmail5">Email:</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="inputEmail5"
+                required />
+            </div>
+            <!-- Senha -->
+            <div class="form-group col mt-2">
+              <label for="inputPassword4">Password:</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="inputPassword4"
+                required />
+              <small
+                id="passwordHelpBlock"
+                class="form-text text-muted">
+                Sua senha deve ter entre 8 e 20 caracteres, os quais devem ser
+                letras e números, sem espaços, caracteres especiais ou emojis.
+              </small>
+                <!-- Senha -->
+            <div class="form-group col mt-2">
+                <label for="inputPassword4">Password:</label>
+                <input
+                  type="password"
+                  name="confirm"
+                  class="form-control"
+                  id="inputPassword4"
+                  required />
+              <br />
+              <br />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check mt-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="gridCheck"
+                required />
+              <label
+                class="form-check-label"
+                for="gridCheck">
+                Concordo com os
+                <a
+                  href="./termos-de-uso.html"
+                  class="termosdeuso">
+                  Termos de Uso
+                </a>
+                e as condições estabelecidas.
+              </label>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary mt-3 link2"
+            style="border: none">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <%- include ("./components/footer.ejs")%>
+  </body>
 </html>
