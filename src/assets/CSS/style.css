@@ -11263,6 +11263,10 @@ footer {
   background-color: rgb(245, 245, 245);
 }
 
+.contrast-color {
+  background-color: rgb(70, 102, 51);
+}
+
 .regular-card {
   max-width: 20rem;
 }

@@ -1,88 +1,209 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <%-include ("./components/head.ejs") %>
-</head>
-<body>
+  <head>
 
-    <h1>Create</h1>
+    <%- include ("./components/head.ejs") %>
 
-    <form action="/create" enctype="multipart/form-data" method="post">
-        <input type="text" name="titulo" id="">
-        <input type="text" name="descricao" id="">
-        <input type="number" name="porcoes" id="">
-        <input type="text" name="ingredientes" id="">
-        <textarea name="preparo" id="" cols="30" rows="10"></textarea>
-        <input type="file" name="imagem" id="">
-    
-        <input type="submit" value="log">
-    </form>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0">
+    <title>Crie sua receita</title>
+    <meta
+      name="description"
+      content="Reddito cadastro de receita">
+    <!-- CSS Bootstrap -->
+  </head>
 
-    <h1>Read</h1>
+  <body>
+    <!-- Menu -->
+    <%- include ("./components/nav.ejs") %>
 
+    <!-- Formulário -->
+    <!-- Entrada para o Backend com as informações já preenchidas e envidas para essa página de visualização -->
+    <section
+      class="contrast-color container-fluid d-flex flex-column justify-content-top align-items-center">
+      <form>
+        <div class="card mb-5 mt-5">
+          <div class="card-body">
+            <h5 class="card-title">Cadastre sua receita</h5>
+            <!--Nome do dono do perfil-->
+            <p class="descricao-receita">@nomedeusuariodo</p>
+            <!--
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae lorem nulla. Integer dui magna, commodo non mi eget, consequat posuere est. Fusce quis lobortis tellus. Proin efficitur tristique auctor. Sed suscipit molestie sodales. Sed cursus ipsum ligula, ac pretium est ullamcorper vitae. Fusce porttitor, tellus at ultricies bibendum, mauris felis convallis felis, vitae ullamcorper eros turpis sollicitudin nisl. Sed enim nisl, luctus iaculis erat eu, vulputate lacinia orci. Nullam id felis leo. In ut justo eu justo varius volutpat ac non massa. Quisque in elementum turpis.</p>
+          <a href="#" class="btn btn-primary">Visitar</a>
+          -->
+            <!-- Input, nome da receita -->
+            <div class="form-group">
+              <label for="formGroupExampleInput">
+                <strong>Nome da Receita:</strong>
+              </label>
+              <input
+                type="text"
+                name="titulo"
+                class="form-control"
+                id="formGroupExampleInput"
+                placeholder="Torta de Frango" />
+            </div>
+            <br />
+            <!-- Input yes/no -->
+            <div class="form-group">
+              <label for="inputState">
+                <strong>Essa receita é autoral?</strong>
+              </label>
+              <select
+                id="inputState"
+                class="form-control">
+                <option selected>...</option>
+                <option>Sim</option>
+                <option>Não</option>
+              </select>
+            </div>
+            <br />
+            <!-- Input de Autoria/Créditos -->
+            <div class="form-group">
+              <label for="formGroupExampleInput1">
+                <strong>
+                  Se não for autoral, coloque os créditos do autor:
+                </strong>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="formGroupExampleInput1"
+                placeholder="Feito por Nome Sobrenome @doautor"
+                required />
+              <br />
+            </div>
+            <!-- Input Ingredientes -->
+            <div class="form-group">
+              <label for="inputState"><strong>Ingredientes:</strong></label>
+              <textarea
+                class="form-control"
+                name="ingredientes"
+                id="exampleFormControlTextarea1"
+                rows="5"
+                style="resize: none"
+                placeholder="2 ovos, 2 colheres de açucar, 2 copos de óleo... (separe os ingredientes por ',')"
+                required></textarea>
+            </div>
+            <br />
+            <!-- Input Modo de Preparo -->
+            <div class="form-group">
+              <label for="inputState"><strong>Modo de preparo:</strong></label>
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea2"
+                rows="5"
+                style="resize: none"
+                placeholder="Primeiro, misture os secos em uma bacia..."
+                required></textarea>
+            </div>
+            <br />
+            <!-- Input mais informações -->
+            <div class="form-group">
+              <label for="inputState"><strong>Mais Informações:</strong></label>
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea3"
+                rows="5"
+                style="resize: none"
+                placeholder="Parte opcional"></textarea>
+              <p class="observacao">
+                Adicione a história, curiosidades e mais informações sobre a sua
+                receita se achar necessário.
+              </p>
+            </div>
+            <br />
+            <label>
+              <strong>Marque os ingredientes que a sua receita contém:</strong>
+            </label>
+            <br />
+            <div class="form-check form-check-inline mt-2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox0"
+                value="opcao1" />
+              <label
+                class="form-check-label"
+                for="inlineCheckbox0">
+                Glúten
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox1"
+                value="opcao2" />
+              <label
+                class="form-check-label"
+                for="inlineCheckbox1">
+                Açucar
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox2"
+                value="opcao2" />
+              <label
+                class="form-check-label"
+                for="inlineCheckbox2">
+                Soja
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox3"
+                value="opcao2" />
+              <label
+                class="form-check-label"
+                for="inlineCheckbox3">
+                Leite
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox4"
+                value="opcao2" />
+              <label
+                class="form-check-label"
+                for="inlineCheckbox4">
+                Trigo
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox5"
+                value="opcao2" />
+              <label
+                class="form-check-label"
+                for="inlineCheckbox5">
+                Nenhum dos itens anteriores
+              </label>
+            </div>
+            <br />
+          </div>
+          <button
+            type="button"
+            class="btn btn-success btn-block m-3">
+            Cadastrar Receita
+          </button>
+        </div>
+      </form>
+    </section>
 
-    <%for (let i = 0; i < retorno.length; i++) {%>
-        <p>Array Position: <%=i%></p>
-
-        <p>Titulo: <%=retorno[i].Titulo%></p>
-        <p>Descrição: <%=retorno[i].Descricao%></p>
-        <p>Ingredientes: <%=retorno[i].Ingredientes%></p>
-        <p>Porções: <%=retorno[i].Porcoes%></p>
-        <p>Preparo: <%=retorno[i].Preparo%></p>
-        <p>Alterado: <%=retorno[i].Alterado%></p>
-        <p>Data de Cadastro<%=retorno[i].Data_de_cadastro%></p>
-        <p>File Name: <%=retorno[i].Imagem%></p>
-        <img width="800" src="<%=retorno[i].Imagem%>" alt="Foto da Receita '<%=retorno[i].Titulo%>'" >
-
-        <hr>
-        
-    <%}%>
-
-
-
-    <h1>Update && Delete</h1>
-
-    <%for (let i = 0; i < retorno.length; i++) {%>
-
-
-        <form action="/update" method="post">
-
-            <%=i%>
-
-            <h3><%=retorno[i]._id%></h3>
-            <input type="hidden" name="_id" value="<%=retorno[i]._id%>">
-            <input type="text" name="titulo" id="" value="<%=retorno[i].Titulo%>">
-            <input type="text" name="descricao" id="" value="<%=retorno[i].Descricao%>">
-            <input type="text" name="ingredientes" id="" value="<%=retorno[i].Ingredientes%>">
-            <input type="number" name="porcoes" id="" value="<%=retorno[i].Porcoes%>">
-            <textarea name="preparo" id="" cols="30" rows="10" ><%=retorno[i].Preparo%></textarea>
-        
-            <input type="submit" value="Update <%=i%>">
-            
-            <%=retorno[i].Alterado%>
-            <%=retorno[i].Data_de_cadastro%>
-
-
-        </form>
-
-
-        <form action="/delete" method="post">
-
-            <input type="hidden" name="_id" value="<%=retorno[i]._id%>">
-        
-            <input type="submit" value="Delete <%=i%>">
-
-        </form>
-
-        <hr>
-        
-    <%}%>
-
-
-
-
-</body>
+    <!-- Rodapé -->
+    <%- include ("./components/footer.ejs") %>
+  </body>
 </html>
