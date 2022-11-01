@@ -1,0 +1,147 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <%-include ("./components/head.ejs")%>
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0">
+    <title>Título da homepage</title>
+    <meta
+      name="description"
+      content="Receitas Reddito">
+  </head>
+  <body class="contrast-color">
+    <!-- Menu -->
+    <%-include ("./components/nav.ejs")%>
+
+    <!-- Formulário -->
+    <!-- Entrada para o Backend com as informações já preenchidas e envidas para essa página de visualização -->
+    <section
+      class="container-fluid d-flex flex-column justify-content-top align-items-center">
+      <div class="card mb-5 mt-5 mx-xl">
+        <img
+          class="card-img-top"
+          src="<%=retorno.Imagem%>"
+          alt="Foto da Receita: '<%=retorno.Titulo%>'" />
+        <div class="card-body">
+          <h5 class="card-title h2 text-center"><%=retorno.Titulo%></h5>
+          <!--Nome do usuário que enviou a receita que está em top trends-->
+          <p class="descricao-receita h3 fw-bold"><%=retorno.Email %></p>
+          <!--
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae lorem nulla. Integer dui magna, commodo non mi eget, consequat posuere est. Fusce quis lobortis tellus. Proin efficitur tristique auctor. Sed suscipit molestie sodales. Sed cursus ipsum ligula, ac pretium est ullamcorper vitae. Fusce porttitor, tellus at ultricies bibendum, mauris felis convallis felis, vitae ullamcorper eros turpis sollicitudin nisl. Sed enim nisl, luctus iaculis erat eu, vulputate lacinia orci. Nullam id felis leo. In ut justo eu justo varius volutpat ac non massa. Quisque in elementum turpis.</p>
+        <a href="#" class="btn btn-primary">Visitar</a>
+        -->
+          <p class="subtitle-card fw-bold">Ingredientes:</p>
+          <ul class="list-group list-group-flush">
+            <%for (let i = 0; i < retorno.Ingredientes.length; i++) {%>
+              <li class="list-group-item rounded my-2 border border-success ">- <%=retorno.Ingredientes[i] %></li>
+            <%}%>
+          </ul>
+          <br />
+          <p class="subtitle-card fw-bold">Informações Descrição:</p>
+          <p class="text">
+            <%=retorno.Descricao%>
+          </p>
+          <br>
+          <p class="subtitle-card fw-bold">Informações Porções:</p>
+          <p class="text">
+            <%=retorno.Porcoes%>
+          </p>
+          <br>
+          <p class="subtitle-card fw-bold">Modo de Preparo:</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-justify"><%=retorno.Preparo%></li>
+          </ul>
+          <br />
+          <p class="text">
+            Receita publicada em:  <%=retorno.Data_de_cadastro.toISOString().slice(0,10)%>
+          </p>
+          <a
+            href="#"
+            class="btn link2"
+            role="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">
+            AVISO - Reforçando Informações
+          </a>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5
+                    class="modal-title"
+                    id="staticBackdropLabel">
+                    Avisos - Reforçando Informações
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Essa receita pode conter alguns itens que talvez você seja
+                    intolerante:
+                  </p>
+                  <p>Confira se essa receita não tem:</p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-warning">
+                      ⚠️ Glúten
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                      ⚠️ Soja
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                      ⚠️ Trigo
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                      ⚠️ Lactose
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                      ⚠️ Açucar
+                    </li>
+                  </ul>
+                  <br />
+                  <p>
+                    <strong>
+                      Lembrando, não somos responsáveis por qualquer ocorrido
+                      com o usuário a partir das receitas, não esqueca de
+                      conferir os nossos
+                    </strong>
+                    <a class="fw-bold" href="/termos-de-uso">Termos de Uso</a>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Entendido
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <%-include ("./components/footer.ejs")%>
+  </body>
+</html>

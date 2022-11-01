@@ -154,7 +154,7 @@ table {
 }
 
 .m-xxxl {
-  margin: 30rem;
+  max-width: 30rem;
 }
 
 .descricao-receita {
@@ -11267,6 +11267,10 @@ footer {
   background-color: rgb(70, 102, 51);
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .regular-card {
   max-width: 20rem;
 }
@@ -11274,6 +11278,11 @@ footer {
 .card image {
   display: flex;
   justify-content: center;
+}
+
+.mx-xl {
+  max-width: 70rem;
+  width: 46.6666666667rem;
 }
 
 .mw {

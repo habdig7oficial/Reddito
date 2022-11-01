@@ -41,7 +41,7 @@ function default_1(app) {
             else {
                 return res.redirect(`/err?${id}`);
             }
-            res.render("detail.ejs", { retorno });
+            res.render("receita.ejs", { retorno });
         });
     });
 }

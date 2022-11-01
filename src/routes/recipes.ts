@@ -43,6 +43,54 @@ export default function (app: Express) {
       return res.redirect("/login");
     }
 
+    /*
+    let retorno = await recipes.find({ Email: email });
+    */
+
+    /* console.log(retorno); */
+
+    /*
+    for (let i = 0; i < retorno.length; i++) {
+      if (retorno[i].Imagem === undefined) {
+        retorno[i].Imagem = "";
+      } else {
+        retorno[i].Imagem = retorno[i].Imagem?.replace(root, "");
+      }
+    }
+    */
+
+    res.render("create.ejs", /*{ retorno }*/);
+  });
+
+  app.get("/minhas-receitas", async function (req: Request, res: Response) {
+    let { jwt, email } = req.cookies;
+
+    let consulta = await users.findOne({
+      Email: email,
+    });
+
+    if (consulta === null) {
+      DelSecret(res);
+      return res.send(`Não foi possivel encontrar o email ${email}`);
+    }
+
+    let result;
+
+    try {
+      result = verifyToken({
+        analise_token: jwt,
+        secret: consulta.JWT,
+      });
+    } catch (err) {
+      console.error(err);
+      return res.send(`Erro genérico`);
+    }
+
+    if (result.verified == false) {
+      DelSecret(res);
+      return res.redirect("/login");
+    }
+
     let retorno = await recipes.find({ Email: email });
 
     /* console.log(retorno); */
@@ -55,8 +103,9 @@ export default function (app: Express) {
       }
     }
 
-    res.render("create.ejs", { retorno });
+    res.render("minhas-receitas.ejs", { retorno });
   });
+
 
   app.post(
     "/create",

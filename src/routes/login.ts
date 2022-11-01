@@ -100,7 +100,7 @@ export default function (app: Express) {
         sameSite: "strict",
       });
 
-      res.redirect("/create");
+      res.redirect("/minhas-receitas");
     } else {
       await deferr(exists);
 
