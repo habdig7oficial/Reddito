@@ -24,10 +24,10 @@
     <!-- Entrada para o Backend com as informações já preenchidas e envidas para essa página de visualização -->
     <section
       class="contrast-color container-fluid d-flex flex-column justify-content-top align-items-center">
-      <form>
+      <form action="/create" method="post">
         <div class="card mb-5 mt-5">
           <div class="card-body">
-            <h5 class="card-title">Cadastre sua receita</h5>
+            <h5 class="card-title h2 text-center">Cadastre sua receita</h5>
             <!--Nome do dono do perfil-->
             <p class="descricao-receita">@nomedeusuariodo</p>
             <!--
@@ -47,6 +47,22 @@
                 placeholder="Torta de Frango" />
             </div>
             <br />
+                <!-- Input mais informações -->
+                <div class="form-group">
+                <label for="inputState"><strong>Descrição:</strong></label>
+                <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea3"
+                    name="descricao"
+                    rows="5"
+                    style="resize: none"
+                    placeholder="Parte opcional"></textarea>
+                <p class="observacao">
+                    Descreva brevemente sua receita (limite de : 200). Adicione a história, curiosidades e mais informações sobre a sua
+                    receita se achar necessário.
+                </p>
+                </div>
+                <br />
             <!-- Input yes/no -->
             <div class="form-group">
               <label for="inputState">
@@ -76,6 +92,24 @@
                 required />
               <br />
             </div>
+
+            <!-- Input de Porções -->
+            <div class="form-group">
+                <label for="formGroupExampleInput555">
+                    <strong>
+                    Porções
+                    </strong>
+                </label>
+                <input
+                    type="number"
+                    name="porcoes"
+                    class="form-control"
+                    id="formGroupExampleInput555"
+                    placeholder="Numero de porções"
+                    required />
+                <br />
+                </div>
+
             <!-- Input Ingredientes -->
             <div class="form-group">
               <label for="inputState"><strong>Ingredientes:</strong></label>
@@ -94,6 +128,7 @@
               <label for="inputState"><strong>Modo de preparo:</strong></label>
               <textarea
                 class="form-control"
+                name="preparo"
                 id="exampleFormControlTextarea2"
                 rows="5"
                 style="resize: none"
@@ -101,21 +136,14 @@
                 required></textarea>
             </div>
             <br />
-            <!-- Input mais informações -->
-            <div class="form-group">
-              <label for="inputState"><strong>Mais Informações:</strong></label>
-              <textarea
-                class="form-control"
-                id="exampleFormControlTextarea3"
-                rows="5"
-                style="resize: none"
-                placeholder="Parte opcional"></textarea>
-              <p class="observacao">
-                Adicione a história, curiosidades e mais informações sobre a sua
-                receita se achar necessário.
-              </p>
-            </div>
-            <br />
+
+            <!-- Imagem -->
+
+            <input class="btn" type="file" name="imagem" id="" required>
+
+            <br>
+            <br>
+
             <label>
               <strong>Marque os ingredientes que a sua receita contém:</strong>
             </label>
@@ -194,11 +222,10 @@
             </div>
             <br />
           </div>
-          <button
-            type="button"
-            class="btn btn-success btn-block m-3">
-            Cadastrar Receita
-          </button>
+          <input
+            type="submit"
+            class="btn btn-success btn-block m-3"
+            value="Cadastrar Receita">
         </div>
       </form>
     </section>

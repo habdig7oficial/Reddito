@@ -30,7 +30,7 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
         <p class="text-center justify-content-center">Não foi possível encontrar nenhuma receita</p>
       <%}%>
       
-      <div class="card-group d-flex flex-row flex-wrap align-items-start primary-green mw">
+      <div class="card-group d-flex flex-row flex-wrap align-items-start mw">
         <%for(let i = 0; i < retorno.length; i++){%>
             <div class="card regular-card mx-3 w3">
               <img
@@ -57,7 +57,7 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                     </ul>
                   </div>
                 </div>
-                <a href="./receita1.html" class="link2 btn " role="button">
+                <a href="./receita?id=<%=retorno[i]._id%>" class="link2 btn " role="button">
                   Saiba Mais
                 </a>
               </div>
