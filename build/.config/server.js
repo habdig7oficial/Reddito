@@ -14,6 +14,7 @@ const index_1 = __importDefault(require("../routes/index"));
 const registro_1 = __importDefault(require("../routes/registro"));
 const login_1 = __importDefault(require("../routes/login"));
 const recipes_1 = __importDefault(require("../routes/recipes"));
+const gallery_1 = __importDefault(require("../routes/gallery"));
 const error_1 = __importDefault(require("../routes/error"));
 const map_1 = __importDefault(require("../routes/map"));
 const app = (0, express_1.default)(); /* Instanciando o express */
@@ -43,6 +44,7 @@ let routes = [
     (0, registro_1.default)(app),
     (0, login_1.default)(app),
     (0, recipes_1.default)(app),
+    (0, gallery_1.default)(app),
     (0, map_1.default)(app),
     (0, error_1.default)(app),
 ]; /* Executando todas a rotas e passando o express para cada uma */

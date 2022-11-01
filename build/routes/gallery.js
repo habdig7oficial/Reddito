@@ -15,20 +15,20 @@ const recipes_1 = require("../.models/recipes");
 const multer_1 = require("../.config/multer");
 function default_1(app) {
     (0, database_1.conexao)();
-    app.get("/", function (req, res) {
+    app.get("/galeria", function (req, res) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            let retorno = yield recipes_1.recipes.find().sort();
+            let retorno = yield recipes_1.recipes.find();
+            /* console.log(retorno); */
             for (let i = 0; i < retorno.length; i++) {
                 if (retorno[i].Imagem === undefined) {
-                    retorno[i].Imagem = "/Images/error404.svg";
+                    retorno[i].Imagem = "";
                 }
                 else {
                     retorno[i].Imagem = (_a = retorno[i].Imagem) === null || _a === void 0 ? void 0 : _a.replace(multer_1.root, "");
                 }
             }
-            console.log(retorno);
-            res.render("index.ejs", { retorno });
+            res.render("gallery.ejs", { retorno });
         });
     });
 }

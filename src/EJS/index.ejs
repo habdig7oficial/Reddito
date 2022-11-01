@@ -50,11 +50,16 @@
   <!--Entrada para o Backend, receitas mais populares-->
   <section class="container" id="recpopulares">
     <h3 id="populares">Mais Populares</h3>
+    
+    <%if (retorno.length == 0){%>
+      <p class="text-center justify-content-center">Não foi possível encontrar uma receita</p>
+    <%}%>
+
     <div class="card-group d-flex flex-wrap m-0 p-0">
       <div class="card-group d-flex flex-wrap m-5 mt-1 px-2">
 
         <%
-        let iterations;
+        let iterations = 0 ;
           if(retorno.length > 3){
             iterations = 3
           }
@@ -64,14 +69,16 @@
         %>
 
         <%
-        let value;
+        let value = 0;
 
           min = Math.ceil(0);
           max = Math.floor(retorno.length);
           value = Math.floor(Math.random() * (max - min + 1)) + min;
+
+          console.log(value)
         
         %>
-
+        
         <%for(let i = 0; i < iterations; i++){%>
           <div class="card mx-3">
             <img
@@ -79,7 +86,7 @@
               class="card-img-top eq"
               alt=" Foto da receita '<%=retorno[i].Titulo%>'"
             />
-            <div class="card-body d-flex justify-content-center flex-column m-3">
+            <div class="card-body d-flex d-flex justify-content-around flex-column m-3">
               <h5 class="card-title"><%=retorno[i].Titulo%></h5>
               <p class="card-text">
                 <%=retorno[i].Descricao%>
@@ -115,90 +122,94 @@
       <h3 id="dia">Receita Aleatória</h3>
       <div class="d-flex justify-content-center mb-5">
         <div class="fixedcard">
-          <div class="card mb-1 mrc">
-            <div class="row">
-              <div class="col-md-0">
-                <img
-                  src="<%=retorno[value].Imagem%>"
-                  class="img-fluid rounded-start"
-                  alt="(Receita Aleatória) '<%=retorno[value].Titulo%>' "
-                />
-              </div>
-              <div class="mx-1">
-                <div class="card-body d-flex justify-content-center flex-column ">
-                  <h5 class="card-title"><%=retorno[value].Titulo%></h5>
-
-                  <p class="card-text">
-                    <%=retorno[value].Descricao%>
-                  </p>
-                  <div class="listinha">
-                    <div class="configlista">
-                      <p> ⚠️ Ingredientes: </p>
-                      <ul class="list-group list-group-flush">
-                        <%for(let j = 0; j < retorno[value].Ingredientes.length; j++){%>
-                        <li class="list-group-item list-group-item-warning">
-                          <%=retorno[value].Ingredientes[j]%>
-                        </li>
-                        <%}%>
-                      </ul>
+          <%if ( retorno.length == 0 ){ %>
+            <p>Não foi possível encontrar uma receita</p>
+          <%}else{%>
+            <div class="card mb-1 mrc">
+              <div class="row">
+                <div class="col-md-0">
+                  <img
+                    src="<%=retorno[value].Imagem%>"
+                    class="img-fluid rounded-start"
+                    alt="(Receita Aleatória) '<%=retorno[value].Titulo%>' "
+                  />
+                </div>
+                <div class="mx-1">
+                  <div class="card-body d-flex justify-content-center flex-column ">
+                    <h5 class="card-title"><%=retorno[value].Titulo%></h5>
+  
+                    <p class="card-text">
+                      <%=retorno[value].Descricao%>
+                    </p>
+                    <div class="listinha">
+                      <div class="configlista">
+                        <p> ⚠️ Ingredientes: </p>
+                        <ul class="list-group list-group-flush">
+                          <%for(let j = 0; j < retorno[value].Ingredientes.length; j++){%>
+                          <li class="list-group-item list-group-item-warning">
+                            <%=retorno[value].Ingredientes[j]%>
+                          </li>
+                          <%}%>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <!--Aqui temos uma entrada para o Backend, com atualização da receita/opcional-->
-                  <p class="card-text">
-                    <small class="text-muted">
-                      Publicada em <%=retorno[value].Data_de_cadastro.toISOString().slice(0,10)%>
-                    </small>
-                  </p>
-                  <a
-                    href="./ver"
-                    class="link2 btn"
-                    role="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    Ver Receita
-                  </a>
-
-                  <!-- Modal -->
-                  <div
-                    class="modal fade"
-                    id="staticBackdrop"
-                    data-bs-backdrop="static"
-                    data-bs-keyboard="false"
-                    aria-labelledby="staticBackdropLabel"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5
-                            class="modal-title"
-                            id="staticBackdropLabel"
-                          >
-                            Faça seu cadastro ou Login
-                          </h5>
-                          <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div class="modal-body">
-                          <p>
-                            Para ter acesso a esse conteúdo, faça o seu
-                            cadastro, ou se já tem uma conta, faça seu
-                            login!
-                          </p>
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Fechar
-                          </button>
+                    <!--Aqui temos uma entrada para o Backend, com atualização da receita/opcional-->
+                    <p class="card-text">
+                      <small class="text-muted">
+                        Publicada em <%=retorno[value].Data_de_cadastro.toISOString().slice(0,10)%>
+                      </small>
+                    </p>
+                    <a
+                      href="./ver"
+                      class="link2 btn"
+                      role="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                    >
+                      Ver Receita
+                    </a>
+  
+                    <!-- Modal -->
+                    <div
+                      class="modal fade"
+                      id="staticBackdrop"
+                      data-bs-backdrop="static"
+                      data-bs-keyboard="false"
+                      aria-labelledby="staticBackdropLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5
+                              class="modal-title"
+                              id="staticBackdropLabel"
+                            >
+                              Faça seu cadastro ou Login
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>
+                              Para ter acesso a esse conteúdo, faça o seu
+                              cadastro, ou se já tem uma conta, faça seu
+                              login!
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Fechar
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -206,7 +217,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          <%}%>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import index from "../routes/index";
 import registro from "../routes/registro";
 import login from "../routes/login";
 import recipes from "../routes/recipes";
+import gallery from "../routes/gallery";
 import error from "../routes/error";
 import map from "../routes/map";
 
@@ -49,6 +50,7 @@ let routes = [
   registro(app),
   login(app),
   recipes(app),
+  gallery(app),
   map(app), //lembrar de deletar
   error(app),
 ]; /* Executando todas a rotas e passando o express para cada uma */
