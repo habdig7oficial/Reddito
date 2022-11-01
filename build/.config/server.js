@@ -18,6 +18,7 @@ const gallery_1 = __importDefault(require("../routes/gallery"));
 const error_1 = __importDefault(require("../routes/error"));
 const map_1 = __importDefault(require("../routes/map"));
 const termos_1 = __importDefault(require("../routes/termos"));
+const detalhes_1 = __importDefault(require("../routes/detalhes"));
 const app = (0, express_1.default)(); /* Instanciando o express */
 exports.app = app;
 const port = process.env.PORT || 7777; /* Definindo a porta de execução */
@@ -46,6 +47,7 @@ let routes = [
     (0, login_1.default)(app),
     (0, recipes_1.default)(app),
     (0, gallery_1.default)(app),
+    (0, detalhes_1.default)(app),
     (0, termos_1.default)(app),
     (0, map_1.default)(app),
     (0, error_1.default)(app),

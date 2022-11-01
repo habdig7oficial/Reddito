@@ -8,7 +8,7 @@ import { root } from "../.config/multer";
 
 export default function (app: Express) {
   conexao();
-  app.get("/galeria", async function (req, res) {
+  app.get("/galeria", async function (req: Request, res: Response) {
     let retorno = await recipes.find();
 
     /* console.log(retorno); */

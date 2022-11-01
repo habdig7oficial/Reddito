@@ -24,7 +24,7 @@
     <!-- Entrada para o Backend com as informações já preenchidas e envidas para essa página de visualização -->
     <section
       class="contrast-color container-fluid d-flex flex-column justify-content-top align-items-center">
-      <form action="/create" method="post">
+      <form enctype="multipart/form-data" action="/create" method="post">
         <div class="card mb-5 mt-5">
           <div class="card-body">
             <h5 class="card-title h2 text-center">Cadastre sua receita</h5>
@@ -47,9 +47,13 @@
                 placeholder="Torta de Frango" />
             </div>
             <br />
-                <!-- Input mais informações -->
+                <!-- Input mais Descrição -->
                 <div class="form-group">
                 <label for="inputState"><strong>Descrição:</strong></label>
+                <p class="observacao text-muted">
+                    Descreva brevemente sua receita (limite de : 200). Adicione a história, curiosidades e mais informações sobre a sua
+                    receita se achar necessário.
+                </p>
                 <textarea
                     class="form-control"
                     id="exampleFormControlTextarea3"
@@ -57,13 +61,11 @@
                     rows="5"
                     style="resize: none"
                     placeholder="Parte opcional"></textarea>
-                <p class="observacao">
-                    Descreva brevemente sua receita (limite de : 200). Adicione a história, curiosidades e mais informações sobre a sua
-                    receita se achar necessário.
-                </p>
+
                 </div>
                 <br />
             <!-- Input yes/no -->
+                <!--
             <div class="form-group">
               <label for="inputState">
                 <strong>Essa receita é autoral?</strong>
@@ -77,7 +79,9 @@
               </select>
             </div>
             <br />
+        -->
             <!-- Input de Autoria/Créditos -->
+            <!--
             <div class="form-group">
               <label for="formGroupExampleInput1">
                 <strong>
@@ -92,6 +96,7 @@
                 required />
               <br />
             </div>
+        -->
 
             <!-- Input de Porções -->
             <div class="form-group">
@@ -144,6 +149,9 @@
             <br>
             <br>
 
+            <!-- Extras -->
+
+            <!--
             <label>
               <strong>Marque os ingredientes que a sua receita contém:</strong>
             </label>
@@ -222,6 +230,7 @@
             </div>
             <br />
           </div>
+        -->
           <input
             type="submit"
             class="btn btn-success btn-block m-3"
