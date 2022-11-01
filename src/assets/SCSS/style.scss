@@ -1,6 +1,7 @@
 /** @format */
 
 @use "reset.scss";
+@use "termos-de-uso.scss";
 @use "./bootstrap/bootstrap.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
@@ -14,6 +15,7 @@ $primary-green: rgba(107, 138, 83);
 $detail-color: rgba(125, 173, 97);
 $contrast-color: rgba(70, 102, 51);
 $variant-color: rgba(107, 148, 83);
+$secondary-gray: rgba(126, 126, 126);
 
 $white: rgba(255, 255, 255);
 $gray: rgba(245, 245, 245);
@@ -318,17 +320,6 @@ footer {
 
 .w3 {
   width: 50rem;
-}
-
-/* Termos de Uso Part */
-
-.termosdeuso {
-  text-align: justify;
-  padding: 20px;
-}
-
-.primary-green {
-  background-color: $primary-green;
 }
 
 /* Smartphone Landscape */

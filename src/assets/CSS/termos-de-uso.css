@@ -1,0 +1,27 @@
+/**
+ * /* Termos de Uso Part
+ *
+ * @format
+ */
+.termosdeuso {
+  text-align: justify;
+  padding: 20px;
+}
+
+.primary-green {
+  background-color: rgb(107, 138, 83);
+}
+
+.m-xxxl {
+  margin: 30rem;
+}
+
+.descricao-receita {
+  font-size: 18px;
+  color: rgb(126, 126, 126);
+  text-align: center;
+  font-weight: bold;
+  opacity: 90%;
+}
+
+/*# sourceMappingURL=termos-de-uso.css.map */

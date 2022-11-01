@@ -1,0 +1,29 @@
+/**
+ * /* Termos de Uso Part
+ *
+ * @format
+ */
+
+$primary-green: rgba(107, 138, 83);
+$secondary-gray: rgba(126, 126, 126);
+
+.termosdeuso {
+  text-align: justify;
+  padding: 20px;
+}
+
+.primary-green {
+  background-color: $primary-green;
+}
+
+.m-xxxl {
+  margin: 30rem;
+}
+
+.descricao-receita {
+  font-size: 18px;
+  color: $secondary-gray;
+  text-align: center;
+  font-weight: bold;
+  opacity: 90%;
+}
