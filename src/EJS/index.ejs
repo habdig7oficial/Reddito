@@ -2,19 +2,10 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
+  <%-include ("./components/head.ejs") %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reddito | Home Page</title>
   <meta name="description" content="Reddito Homepage">
-
-  <!-- CSS Customizado + bootsrap -->
-  <link rel="stylesheet" href="/CSS/style.css">
-  
-  <!-- JS Part of Bootstrap-->
-  <script src="JS/bootstrap/bootstrap.js"></script>
-
-  <!-- Favicon -->
-  <link rel="icon" href="/Images/reddito.png">
 </head>
 
 <body>
@@ -55,8 +46,8 @@
       <p class="text-center justify-content-center">Não foi possível encontrar uma receita</p>
     <%}%>
 
-    <div class="card-group d-flex flex-wrap m-0 p-0">
-      <div class="card-group d-flex flex-wrap m-5 mt-1 px-2">
+    <div class="card-group d-flex flex-wrap justify-content-around m-0 p-0">
+      <div class="card-group d-flex align-items-start flex-wrap m-5 mt-1 px-2">
 
         <%
         let iterations = 0 ;
@@ -73,14 +64,14 @@
 
           min = Math.ceil(0);
           max = Math.floor(retorno.length);
-          value = Math.floor(Math.random() * (max - min + 1)) + min;
+          value = Math.floor(Math.random() * (max - min)) + min;
 
           console.log(value)
         
         %>
         
         <%for(let i = 0; i < iterations; i++){%>
-          <div class="card mx-3">
+          <div class="card regular-card mx-3">
             <img
               src="<%=retorno[i].Imagem%>"
               class="card-img-top eq"
@@ -217,6 +208,7 @@
                 </div>
               </div>
             </div>
+            <p class="d-none">Numero do array: <%=value%> </p>
           <%}%>
         </div>
       </div>

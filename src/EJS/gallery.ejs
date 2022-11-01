@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8">
+    <%-include ("./components/head.ejs") %>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0">
@@ -11,14 +11,6 @@
     <meta
       name="description"
       content="Galeria de Receitas do Reddito">
-    <!-- CSS Customizado -->
-    <link
-      rel="stylesheet"
-      href="/CSS/style.css" />
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="/Images/logo-da-pag.png" />
   </head>
 
   <!-- Tela após cadastro, contendo o perfil.
@@ -38,9 +30,9 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
         <p class="text-center justify-content-center">Não foi possível encontrar nenhuma receita</p>
       <%}%>
       
-      <div class="card-group d-flex mw">
+      <div class="card-group d-flex flex-row flex-wrap align-items-start primary-green mw">
         <%for(let i = 0; i < retorno.length; i++){%>
-            <div class="card mx-3 w3">
+            <div class="card regular-card mx-3 w3">
               <img
                 src="<%=retorno[i].Imagem%>"
                 class="card-img-top eq"
@@ -52,8 +44,8 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                   <%=retorno[i].Descricao%>
                 </p>
                 <!-- Entrada para o Backend, alerta de produtos -->
-                <div class="listinha">
-                  <div class="configlista">
+                <div class="listinha ">
+                  <div class="configlista ">
                     <p> ⚠️ Ingredientes: </p>
                     <ul class="list-group list-group-flush">
                       <%for(let j = 0; j < retorno[i].Ingredientes.length; j++){%>
@@ -65,7 +57,7 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                     </ul>
                   </div>
                 </div>
-                <a href="./receita1.html" class="link2 btn" role="button">
+                <a href="./receita1.html" class="link2 btn " role="button">
                   Saiba Mais
                 </a>
               </div>

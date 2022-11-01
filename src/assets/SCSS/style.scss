@@ -299,8 +299,13 @@ footer {
   background-color: $gray;
 }
 
-.card {
+.regular-card {
   max-width: 20rem;
+}
+
+.card image {
+  display: flex;
+  justify-content: center;
 }
 
 .mw {
@@ -313,6 +318,17 @@ footer {
 
 .w3 {
   width: 50rem;
+}
+
+/* Termos de Uso Part */
+
+.termosdeuso {
+  text-align: justify;
+  padding: 20px;
+}
+
+.primary-green {
+  background-color: $primary-green;
 }
 
 /* Smartphone Landscape */

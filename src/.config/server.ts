@@ -14,6 +14,7 @@ import recipes from "../routes/recipes";
 import gallery from "../routes/gallery";
 import error from "../routes/error";
 import map from "../routes/map";
+import termos from "../routes/termos";
 
 const app = express(); /* Instanciando o express */
 const port = process.env.PORT || 7777; /* Definindo a porta de execução */
@@ -51,6 +52,7 @@ let routes = [
   login(app),
   recipes(app),
   gallery(app),
+  termos(app),
   map(app), //lembrar de deletar
   error(app),
 ]; /* Executando todas a rotas e passando o express para cada uma */
