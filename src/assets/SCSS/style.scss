@@ -324,6 +324,13 @@ footer {
   width: calc($width / 1.5);
 }
 
+.wv-100 {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
 .mw {
   display: flex;
   justify-content: center;

@@ -11285,6 +11285,13 @@ footer {
   width: 46.6666666667rem;
 }
 
+.wv-100 {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
 .mw {
   display: flex;
   justify-content: center;

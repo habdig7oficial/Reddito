@@ -59,7 +59,7 @@ export default function (app: Express) {
     }
     */
 
-    res.render("create.ejs", /*{ retorno }*/);
+    res.render("create.ejs" /*{ retorno }*/);
   });
 
   app.get("/minhas-receitas", async function (req: Request, res: Response) {
@@ -105,7 +105,6 @@ export default function (app: Express) {
 
     res.render("minhas-receitas.ejs", { retorno });
   });
-
 
   app.post(
     "/create",

@@ -23,6 +23,47 @@ const GabargeCollector_1 = __importDefault(require("./middleware/GabargeCollecto
 function default_1(app) {
     (0, database_1.conexao)();
     app.get("/create", function (req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let { jwt, email } = req.cookies;
+            let consulta = yield users_1.users.findOne({
+                Email: email,
+            });
+            if (consulta === null) {
+                (0, DeleteSecret_1.default)(res);
+                return res.send(`Não foi possivel encontrar o email ${email}`);
+            }
+            let result;
+            try {
+                result = (0, Tokens_1.verifyToken)({
+                    analise_token: jwt,
+                    secret: consulta.JWT,
+                });
+            }
+            catch (err) {
+                console.error(err);
+                return res.send(`Erro genérico`);
+            }
+            if (result.verified == false) {
+                (0, DeleteSecret_1.default)(res);
+                return res.redirect("/login");
+            }
+            /*
+            let retorno = await recipes.find({ Email: email });
+            */
+            /* console.log(retorno); */
+            /*
+            for (let i = 0; i < retorno.length; i++) {
+              if (retorno[i].Imagem === undefined) {
+                retorno[i].Imagem = "";
+              } else {
+                retorno[i].Imagem = retorno[i].Imagem?.replace(root, "");
+              }
+            }
+            */
+            res.render("create.ejs" /*{ retorno }*/);
+        });
+    });
+    app.get("/minhas-receitas", function (req, res) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
             let { jwt, email } = req.cookies;
@@ -58,7 +99,7 @@ function default_1(app) {
                     retorno[i].Imagem = (_a = retorno[i].Imagem) === null || _a === void 0 ? void 0 : _a.replace(multer_1.root, "");
                 }
             }
-            res.render("create.ejs", { retorno });
+            res.render("minhas-receitas.ejs", { retorno });
         });
     });
     app.post("/create", multer_1.M_conf.single("imagem"), function (req, res) {

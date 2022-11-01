@@ -89,7 +89,7 @@ function default_1(app) {
                     secure: secure,
                     sameSite: "strict",
                 });
-                res.redirect("/create");
+                res.redirect("/minhas-receitas");
             }
             else {
                 yield deferr(exists);
