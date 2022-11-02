@@ -1,15 +1,15 @@
 /** @format */
 
-import type { Express, Request, Response } from "express";
-import { conexao } from "../.config/database";
 
-import { recipes } from "../.models/recipes";
-import { root } from "../.config/multer";
+import { conexao } from "../.config/database.mjs";
 
-export default function (app: Express) {
+import { recipes } from "../.models/recipes.mjs";
+import { root } from "../.config/multer.mjs";
+
+export default function (app) {
   conexao();
 
-  app.get("/", async function (req: Request, res: Response) {
+  app.get("/", async function (req, res) {
     let retorno = await recipes.find().sort();
 
     for (let i = 0; i < retorno.length; i++) {

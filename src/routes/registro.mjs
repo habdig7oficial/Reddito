@@ -1,28 +1,22 @@
 /** @format */
 
-import type { Express, Request, Response } from "express";
-import { conexao } from "../.config/database";
+import { conexao } from "../.config/database.mjs";
 import argon2 from "argon2";
-import { users } from "../.models/users";
+import { users } from "../.models/users.mjs";
 
-interface dados {
-  nome: string;
-  email: string;
-  password: string;
-  confirm: string;
-}
 
-export default function (app: Express) {
+
+export default function (app) {
   conexao();
 
-  app.get("/registro", async function (req: Request, res: Response) {
+  app.get("/registro", async function (req, res) {
     let cas = await users.find();
     console.log(cas);
     res.render("registro.ejs", {});
   });
 
-  app.post("/registro", async function (req: Request, res: Response) {
-    let dados: dados = req.body; /* Requisita dados do body */
+  app.post("/registro", async function (req, res) {
+    let dados = req.body; /* Requisita dados do body */
 
     /* Remove espaços denescessários */
     dados.nome = dados.nome.trim();

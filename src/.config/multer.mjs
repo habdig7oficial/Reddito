@@ -23,7 +23,7 @@ export default function (app: Express) {
 }
 */
 
-import makeSecrete from "../routes/middleware/makeSecrete";
+import makeSecrete from "../routes/middleware/makeSecrete.mjs";
 import path from "path";
 
 let max = Math.ceil(999999);

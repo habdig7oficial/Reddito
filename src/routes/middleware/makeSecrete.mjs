@@ -1,6 +1,6 @@
 /** @format */
 
-export default async function (length: number) {
+export default async function (length) {
   let result = "";
   let characters =
     "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM,./?-=+`~!@#$%^&*()1234567890";

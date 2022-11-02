@@ -1,14 +1,13 @@
 /** @format */
 
-import { Express, Request, Response } from "express";
-import { conexao } from "../.config/database";
-import { recipes } from "../.models/recipes";
+import { conexao } from "../.config/database.mjs";
+import { recipes } from "../.models/recipes.mjs";
 
-import { root } from "../.config/multer";
+import { root } from "../.config/multer.mjs";
 
-export default function (app: Express) {
+export default function (app) {
   conexao();
-  app.get("/receita", async function (req: Request, res: Response) {
+  app.get("/receita", async function (req, res) {
     let { id } = req.query;
 
     let retorno;

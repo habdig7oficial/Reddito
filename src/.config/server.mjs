@@ -7,15 +7,15 @@ import cookieParser from "cookie-parser"; /* Lib para trabalhar com cookies para
 import cors from "cors"; /* Lib para trabalhar como api para requisições externas */
 
 /* Importando Rotas manuamente */
-import index from "../routes/index";
-import registro from "../routes/registro";
-import login from "../routes/login";
-import recipes from "../routes/recipes";
-import gallery from "../routes/gallery";
-import error from "../routes/error";
-import map from "../routes/map";
-import termos from "../routes/termos";
-import detalhes from "../routes/detalhes";
+import index from "../routes/index.mjs";
+import registro from "../routes/registro.mjs";
+import login from "../routes/login.mjs";
+import recipes from "../routes/recipes.mjs";
+import gallery from "../routes/gallery.mjs";
+import error from "../routes/error.mjs";
+import map from "../routes/map.mjs";
+import termos from "../routes/termos.mjs";
+import detalhes from "../routes/detalhes.mjs";
 
 const app = express(); /* Instanciando o express */
 const port = process.env.PORT || 7777; /* Definindo a porta de execução */
@@ -61,4 +61,4 @@ let routes = [
 
 export { app, port }; /* Exportando variáveis */
 
-console.log(__dirname);
+

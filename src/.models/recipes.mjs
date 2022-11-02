@@ -9,7 +9,7 @@ const model = new mongoose.Schema({
   Tempo: Number,
   Porcoes: Number,
   Imagem: String /* Path to image */,
-  Ingredientes: Array<String>,
+  Ingredientes: Array,
   Preparo: String,
   Alterado: { type: Boolean, default: false },
   Data_de_cadastro: { type: Date, default: Date.now() },

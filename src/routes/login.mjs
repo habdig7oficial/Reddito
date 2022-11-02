@@ -1,26 +1,21 @@
 /** @format */
 
-import type { Express, Request, Response } from "express";
 import argon2 from "argon2";
-import { conexao } from "../.config/database";
-import { users } from "../.models/users";
-import { createToken } from "./middleware/Tokens";
-import makeSecret from "./middleware/makeSecrete";
+import { conexao } from "../.config/database.mjs";
+import { users } from "../.models/users.mjs";
+import { createToken } from "./middleware/Tokens.mjs";
+import makeSecret from "./middleware/makeSecrete.mjs";
 
-interface dados {
-  email: string;
-  password: string;
-}
 
-export default function (app: Express) {
+export default function (app) {
   conexao();
 
-  app.get("/login", async function (req: Request, res: Response) {
+  app.get("/login", async function (req, res) {
     res.render("login.ejs");
   });
 
-  app.post("/login", async function (req: Request, res: Response) {
-    let { email, password }: dados = req.body;
+  app.post("/login", async function (req, res) {
+    let { email, password }= req.body;
 
     let reqIp = req.ip;
 
@@ -64,7 +59,7 @@ export default function (app: Express) {
       return res.send(`Um erro inesperado aconeceu`);
     }
 
-    let secret: string | undefined = await makeSecret(50);
+    let secret = await makeSecret(50);
 
     if (result == true && exists.Email != undefined) {
       let token = createToken({
@@ -107,7 +102,7 @@ export default function (app: Express) {
       return res.send(`Email e/ou senha inválidos`);
     }
 
-    async function deferr(exists: any) {
+    async function deferr(exists) {
       let logg = await users.findOneAndUpdate(
         {
           Email: exists.Email,

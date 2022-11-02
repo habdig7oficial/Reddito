@@ -33,9 +33,7 @@ function DelUser(user: user) {
 
 export { DelUser }; */
 
-import { Response } from "express";
-
-export default function (res: Response): void | string {
+export default function (res) {
   try {
     res.clearCookie("jwt");
     res.clearCookie("email");

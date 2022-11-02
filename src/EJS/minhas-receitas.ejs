@@ -83,93 +83,21 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                             </div>
                             <div class="modal-body">
 
-                                <form enctype="multipart/form-data" action="/update" method="post">
+                                <form class="form" action="/update" method="post">
 
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">
-                                          <strong>Nome da Receita:</strong>
-                                        </label>
-                                        <input
-                                          type="text"
-                                          name="titulo"
-                                          class="form-control"
-                                          id="formGroupExampleInput"
-                                          value="<%=retorno[i].Titulo%>" />
-                                    </div>
-                                      <br />
-                                          <!-- Input mais Descrição -->
-                                          <div class="form-group">
-                                          <label for="inputState"><strong>Descrição:</strong></label>
-                                          <p class="observacao text-muted">
-                                              Descreva brevemente sua receita (limite de : 200). Adicione a história, curiosidades e mais informações sobre a sua
-                                              receita se achar necessário.
-                                          </p>
-                                          <textarea
-                                              class="form-control"
-                                              id="exampleFormControlTextarea3"
-                                              name="descricao"
-                                              rows="5"
-                                              style="resize: none"
-                                              value=""><%=retorno[i].Descricao%></textarea>
-                          
-                                        </div>
-                                        <br />
-
-                                        <!-- Input de Porções -->
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput555">
-                                                <strong>
-                                                Porções
-                                                </strong>
-                                            </label>
-                                            <input
-                                                type="number"
-                                                name="porcoes"
-                                                class="form-control"
-                                                id="formGroupExampleInput555"
-                                                value="<%=retorno[i].Porcoes%>"
-                                                required />
-                                            <br />
-                                        </div>
-
-                                        <!-- Input Ingredientes -->
-                                        <div class="form-group">
-                                        <label for="inputState"><strong>Ingredientes:</strong></label>
-                                        <textarea
-                                            class="form-control"
-                                            name="ingredientes"
-                                            id="exampleFormControlTextarea1"
-                                            rows="5"
-                                            style="resize: none"
-                                            value=""
-                                            required><%=retorno[i].Ingredientes%></textarea>
-                                        </div>
-                                        <br />
-                                        <!-- Input Modo de Preparo -->
-                                        <div class="form-group">
-                                        <label for="inputState"><strong>Modo de preparo:</strong></label>
-                                        <textarea
-                                            class="form-control"
-                                            name="preparo"
-                                            id="exampleFormControlTextarea2"
-                                            rows="5"
-                                            style="resize: none"
-                                            required><%=retorno[i].Preparo%></textarea>
-                                        </div>
-                                        <br />
-
-                                    <!-- Imagem -->
-
-                                    <input class="btn" type="file" name="imagem" id="" required>
-
+                                    <%=i%>
+                        
+                                    <h3><%=retorno[i]._id%></h3>
+                                    <input class="form-control my-2" type="hidden" name="_id" value="<%=retorno[i]._id%>">
+                                    <input class="form-control my-2" type="text" name="titulo" id="" value="<%=retorno[i].Titulo%>">
+                                    <input class="form-control my-2" type="text" name="descricao" id="" value="<%=retorno[i].Descricao%>">
+                                    <input class="form-control my-2" type="text" name="ingredientes" id="" value="<%=retorno[i].Ingredientes%>">
+                                    <input class="form-control my-2" type="number" name="porcoes" id="" value="<%=retorno[i].Porcoes%>">
+                                    <textarea class="form-control my-2" name="preparo" id="" cols="30" rows="10" ><%=retorno[i].Preparo%></textarea>
                                 
-
-
-                                                <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <input type="submit" class="btn btn-warning" value="Update <%=retorno[i].Titulo%>">
-                                                </div>
-
+                                    <input type="submit" value="Update <%=i%>">
+                        
+                        
                                 </form>
 
                             </div>

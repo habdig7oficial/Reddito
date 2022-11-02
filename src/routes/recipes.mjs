@@ -1,20 +1,19 @@
 /** @format */
 
-import type { Express, Request, Response } from "express";
-import { conexao } from "../.config/database";
+import { conexao } from "../.config/database.mjs";
 
-import { M_conf, root } from "../.config/multer";
-import { users } from "../.models/users";
-import { recipes } from "../.models/recipes";
+import { M_conf, root } from "../.config/multer.mjs";
+import { users } from "../.models/users.mjs";
+import { recipes } from "../.models/recipes.mjs";
 
-import { verifyToken } from "./middleware/Tokens";
-import DelSecret from "./middleware/DeleteSecret";
-import GabargeCollector from "./middleware/GabargeCollector";
+import { verifyToken } from "./middleware/Tokens.mjs";
+import DelSecret from "./middleware/DeleteSecret.mjs";
+import GabargeCollector from "./middleware/GabargeCollector.mjs";
 
-export default function (app: Express) {
+export default function (app) {
   conexao();
 
-  app.get("/create", async function (req: Request, res: Response) {
+  app.get("/create", async function (req, res) {
     let { jwt, email } = req.cookies;
 
     let consulta = await users.findOne({
@@ -62,7 +61,7 @@ export default function (app: Express) {
     res.render("create.ejs" /*{ retorno }*/);
   });
 
-  app.get("/minhas-receitas", async function (req: Request, res: Response) {
+  app.get("/minhas-receitas", async function (req, res) {
     let { jwt, email } = req.cookies;
 
     let consulta = await users.findOne({
@@ -109,7 +108,7 @@ export default function (app: Express) {
   app.post(
     "/create",
     M_conf.single("imagem"),
-    async function (req: Request, res: Response) {
+    async function (req, res) {
       let { titulo, descricao, porcoes, ingredientes, preparo } = req.body;
 
       let { jwt, email } = req.cookies;
@@ -191,7 +190,7 @@ export default function (app: Express) {
     },
   );
 
-  app.post("/update", async function (req: Request, res: Response) {
+  app.post("/update", M_conf.single("imagem"), async function (req, res) {
     let { _id, titulo, descricao, porcoes, ingredientes, preparo } = req.body;
 
     let { jwt, email } = req.cookies;
@@ -243,7 +242,7 @@ export default function (app: Express) {
           Email: email,
           Descricao: descricao,
           Porcoes: porcoes,
-          Imagem: path,
+          /*Imagem: path,*/
           Ingredientes: ingredientes,
           Preparo: preparo,
 
@@ -260,7 +259,7 @@ export default function (app: Express) {
     res.redirect("/create");
   });
 
-  app.post("/delete", async function (req: Request, res: Response) {
+  app.post("/delete", async function (req, res) {
     let { _id } = req.body;
 
     let { jwt, email } = req.cookies;
@@ -290,7 +289,7 @@ export default function (app: Express) {
       Email: email,
     });
 
-    let Imagem: string | null = await recipes.findOne({
+    let Imagem = await recipes.findOne({
       _id: _id,
       Email: email,
     });

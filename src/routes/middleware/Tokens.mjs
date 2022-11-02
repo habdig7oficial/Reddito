@@ -2,26 +2,8 @@
 
 import jwt from "jsonwebtoken"; /* Biblioteca de Json Web Token utilizada para autenticação, documentação: https://www.npmjs.com/package/jsonwebtoken */
 
-/* Tipos Aceitaveis de valores */
-interface createToken {
-  msg: string;
-  secret: string;
-  time: string | number;
-}
 
-interface verifyToken {
-  analise_token: string;
-  secret: string;
-}
-
-interface data {
-  jwtoken: string;
-  verified: boolean;
-  return_verify: any;
-  err?: any;
-}
-
-function createToken(tkparam: createToken): void | string {
+function createToken(tkparam) {
   /* Exportando a função como padrão */
 
   /* Tenta criar um token válido */
@@ -42,7 +24,7 @@ function createToken(tkparam: createToken): void | string {
   }
 }
 
-function verifyToken(tkparam: verifyToken): data {
+function verifyToken(tkparam) {
   /* Tenta verificar a autenticidade do token */
   try {
     let token = jwt.verify(tkparam.analise_token, tkparam.secret);
