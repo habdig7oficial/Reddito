@@ -9,7 +9,7 @@
   },
   "scripts": {
     "legacy-postinstall": "node ./src/assets/SCSS/.link-boot.js",
-    "start": "node ./build/trigger.js",
+    "start": "node ./src/trigger.mjs",
     "format": "npx prettier . -w",
     "transpile": "npx tsc",
     "sass": "npx sass src/assets/SCSS/:src/assets/CSS",
