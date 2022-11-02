@@ -29,7 +29,7 @@ import path from "path";
 let max = Math.ceil(999999);
 let min = Math.floor(0);
 
-export const root = "./src/assets"; /* Proibida barra no final */
+export const root = "/src/assets"; /* Proibida barra no final */
 export const storage = `/Public/Images`; /* barra no começo é obrigatória para evitar bugs */
 
 export const where = multer.diskStorage({
