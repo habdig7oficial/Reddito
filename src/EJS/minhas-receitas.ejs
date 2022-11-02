@@ -72,16 +72,18 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
 
                               
 
-                        <form enctype="multipart/form-data" action="/update" method="post">
+
                     <!-- Modal -->
                     <div class="modal fade" id="Update<%=i%>" tabindex="-1" aria-labelledby="UpdateLabel<%=i%>" aria-hidden="true" data-bs-backdrop="static">
-                        <div class="modal-dialog">
+                      <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                             <h1 class="modal-title fs-5" id="UpdateLabel<%=i%>">Update '<%=retorno[i].Titulo%>'</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+
+                                <form enctype="multipart/form-data" action="/update" method="post">
 
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">
@@ -93,7 +95,7 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                                           class="form-control"
                                           id="formGroupExampleInput"
                                           value="<%=retorno[i].Titulo%>" />
-                                      </div>
+                                    </div>
                                       <br />
                                           <!-- Input mais Descrição -->
                                           <div class="form-group">
@@ -110,8 +112,8 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                                               style="resize: none"
                                               value=""><%=retorno[i].Descricao%></textarea>
                           
-                                          </div>
-                                          <br />
+                                        </div>
+                                        <br />
 
                                         <!-- Input de Porções -->
                                         <div class="form-group">
@@ -128,7 +130,7 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                                                 value="<%=retorno[i].Porcoes%>"
                                                 required />
                                             <br />
-                                            </div>
+                                        </div>
 
                                         <!-- Input Ingredientes -->
                                         <div class="form-group">
@@ -156,24 +158,26 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                                         </div>
                                         <br />
 
-                                <!-- Imagem -->
+                                    <!-- Imagem -->
 
-                                <input class="btn" type="file" name="imagem" id="" required>
+                                    <input class="btn" type="file" name="imagem" id="" required>
 
                                 
 
-                                                </div>
+
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <input type="submit" class="btn btn-warning" value="Update <%=retorno[i].Titulo%>">
-
                                                 </div>
-                                            </div>
 
-                                            </div>
-                                        </div>
+                                </form>
+
+                            </div>
+                        </div>
+                      </div>
+                    </div>
                                             
-                                    </form>
+
 
                     <form class="form" action="/delete" method="post">
                         <input type="hidden" name="_id" value="<%=retorno[i]._id%>">

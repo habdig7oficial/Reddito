@@ -226,6 +226,8 @@ export default function (app: Express) {
 
     /*console.log(dados.ingredientes);*/
 
+    console.log(ingredientes);
+    console.log(req.body.ingredientes);
     ingredientes = ingredientes.split(",");
 
     /*console.log(dados.ingredientes);*/
