@@ -29,7 +29,7 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
 
       <div class="card-group d-flex flex-column align-items-center justify-content-center ">
         <%for(let i = 0; i < retorno.length; i++){%>
-            <div class="card regular-card my-3">
+            <div class="card regular-card my-3 w3">
               <img
                 src="<%=retorno[i].Imagem%>"
                 class="card-img-top eq"
@@ -54,9 +54,81 @@ Após ser logado, deve vir diretamente para essa página, aonde terá a opção 
                     </ul>
                   </div>
                 </div>
-                <a href="/receita?id=<%=retorno[i]._id%>" class="link2 btn" role="button">
-                  Saiba Mais
-                </a>
+                <div class="">
+
+                        <a href="/receita?id=<%=retorno[i]._id%>" class="link2 btn my-3 form-control" role="button">
+                            Saiba Mais
+                        </a>
+
+
+
+    
+                        <!-- Update -->
+                        <a type="button" class="btn btn-warning form-control my-2" data-bs-toggle="modal" data-bs-target="#Update<%=i%>">
+                        Update <%=retorno[i].Titulo%>
+                        </a>
+
+
+
+                              
+
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="Update<%=i%>" tabindex="-1" aria-labelledby="UpdateLabel<%=i%>" aria-hidden="true" data-bs-backdrop="static">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="UpdateLabel<%=i%>">Update '<%=retorno[i].Titulo%>'</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form enctype="multipart/form-data" action="/update" method="post">
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-warning" value="Update <%=retorno[i].Titulo%>">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                          
+
+
+                    <form class="form" action="/delete" method="post">
+                        <input type="hidden" name="_id" value="<%=retorno[i]._id%>">
+                        <!-- Button trigger modal -->
+                        <a type="button" class="btn btn-danger form-control my-1" data-bs-toggle="modal" data-bs-target="#exampleModal<%=i%>">
+                            Excluir <%=retorno[i].Titulo%>
+                        </a>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal<%=i%>" tabindex="-1" aria-labelledby="exampleModalLabel<%=i%>" aria-hidden="true" data-bs-backdrop="static"> 
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel<%=i%>">Excluir '<%=retorno[i].Titulo%>'</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                   Deseja Excluir permanentemente a receita '<%=retorno[i].Titulo%>'
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-outline-danger" value="Excluir <%=retorno[i].Titulo%>">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+                        
+
+  
+              
+                      </form>
+                </div>
               </div>
             </div>
           <%}%>

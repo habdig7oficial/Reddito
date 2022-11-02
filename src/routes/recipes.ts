@@ -295,6 +295,6 @@ export default function (app: Express) {
 
     //await GabargeCollector()
 
-    res.redirect("/create");
+    res.redirect("/minhas-receitas");
   });
 }

@@ -257,7 +257,7 @@ function default_1(app) {
                 Email: email,
             });
             //await GabargeCollector()
-            res.redirect("/create");
+            res.redirect("/minhas-receitas");
         });
     });
 }
