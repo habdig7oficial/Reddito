@@ -121,7 +121,7 @@ Toda a organização e planejamento em relação ao projeto estão publicamente 
 | Carolina Barbosa Pacífico de Almeida | Designer Gráfico | 13704 | [CarolinaPacifico](https://github.com/CarolinaPacifico)
 | Heloísa Real | Frontend | 13299 | [heloreal17](https://github.com/heloreal17)
 | Julie Missae Sanday | Designer Gráfico | 12152 | [sandayjulie](https://github.com/sandayjulie)
-| Maria Clara Gomes Gonçalves de Almeida | Designer Gráfico | 11959 | []()
+| Maria Clara Gomes Gonçalves de Almeida | Designer Gráfico | 11959 | [MaClara23](https://github.com/MaClara23)
 | Mateus Felipe da Silveira Vieira | Backend e Banco de Dados | 14598 | [habdig7oficial](https://github.com/habdig7oficial)
 
 Gostaria de ter seu nome aparecendo aqui algum dia? Comece agora as contribuições e faça um pull request!
