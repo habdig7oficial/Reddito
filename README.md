@@ -4,25 +4,30 @@
 <a href="https://reddito-server.herokuapp.com/"> <img width="300" src="https://raw.githubusercontent.com/habdig7oficial/Reddito/full-stack/src/assets/Images/RedditoLogo1.png" alt="Reddito Logo"> </a>
 </div>
 
-
+<br>
 
 <div align="center">
 <a href="https://github.com/habdig7oficial/Reddito/blob/main/LICENSE">
 <img alt="Licença do Reddito" src="https://img.shields.io/github/license/habdig7oficial/Reddito?color=%237DAD61&amp;label=LICEN%C3%87A&amp;logo=Reddito&amp;logoColor=%233E5133&amp;style=for-the-badge">
-</a> <a href="https://github.com/habdig7oficial/Reddito">
-
-<img alt="Frequência de Commits" src="https://img.shields.io/github/commit-activity/y/habdig7oficial/Reddito?color=6B8A53&amp;label=Frequ%C3%AAncia%20de%20Commits&amp;logo=Frequ%C3%AAncia%20de%20Commits&amp;style=for-the-badge"> <img alt="Tamanho de Download" src="https://img.shields.io/github/languages/code-size/habdig7oficial/Reddito?color=%233E5133&amp;label=Tamanho%20de%20Download&amp;logo=Reddito&amp;style=for-the-badge"></a>
+</a> <a href="https://github.com/habdig7oficial/Reddito"> <img alt="Frequência de Commits" src="https://img.shields.io/github/commit-activity/y/habdig7oficial/Reddito?color=6B8A53&amp;label=Frequ%C3%AAncia%20de%20Commits&amp;logo=Frequ%C3%AAncia%20de%20Commits&amp;style=for-the-badge"> <img alt="W3C Validation" src="https://img.shields.io/w3c-validation/html?color=3E5133&logo=Validado&style=for-the-badge&targetUrl=https%3A%2F%2Fanne-ribeiro.github.io%2F2emia-projeto%2F"> <img alt="Tamanho de Download" src="https://img.shields.io/github/languages/code-size/habdig7oficial/Reddito?color=%233E5133&amp;label=Tamanho%20de%20Download&amp;logo=Reddito&amp;style=for-the-badge"></a>
 </div>
 
-> **Um site de cadastro de receitas pessoais, possibilitando a acessibilidade dos usuários de forma simples e intuitiva. Também promovemos o compartilhamento delas e a opção de dar notas e observações para as receitas feitas.**
+
+<br>
+<br>
+
+> **Um site de cadastro de receitas pessoais, que possibilita a acessibilidade dos usuários de forma simples e intuitiva. Também promovemos o compartilhamento delas e a opção de dar notas e observações para as receitas feitas.**
 
 ##### **Copyright &#169; 2022 Anne dos Santos Ribeiro, Carolina Barbosa Pacífico de Almeida, Heloísa Real, Julie Missae Sanday, Maria Clara Gomes Gonçalves, Mateus Felipe da Silveira Vieira**
 
 ###### O Reddito é [Open/Free Software](https://www.gnu.org/philosophy/open-source-misses-the-point.html.en) distribuido na licença leniente [MIT](https://github.com/habdig7oficial/Reddito/blob/main/LICENSE).
 
+<br>
+
 _Este documento contém os principais tópicos para se conhecer, utilizar e participar do projeto Reddito_
 
 
+<br>
 
 ---
 
@@ -36,6 +41,7 @@ Software | Versão | Descrição
 | [Git](https://git-scm.com/downloads) (opicional)| >=2.34.1 | Sistema de versionamento de código. Recomendamos o [git](https://git-scm.com/) que faciltita o processo de download, gestão de branches e repositórios.
 | Browser de Internet | ? | Seu browser de internet favorito
 
+<br>
  
 ---
 
@@ -82,28 +88,49 @@ http://localhost:sua_porta
 ### *&#127882; Parabéns! Você já está rodando o Reddito Localmente!!!*
 
 
+<br>
+<br>
 
+---
 
 ## &#10140; Documentação!
 
-Acesse a documentação do Reddito de Forma online atrvés de nossa [Wiki no GitHub](https://github.com/habdig7oficial/Reddito/wiki) ou obtenha uma cópia física nas livrarias ou falando [conosco](mailto:habdig7@gmail.com)
+Acesse a documentação do Reddito de Forma online através de nossa [Wiki no GitHub](https://github.com/habdig7oficial/Reddito/wiki) ou obtenha uma cópia física nas livrarias ou falando [conosco](mailto:habdig7@gmail.com)
 
+
+<br>
+<br>
+
+---
 
 ## &#10140; Roadmap:
 
-Toda a nossa organização e planejamento estão públicamente disponíveis no [Trello](https://trello.com/b/jWWfNBZU/reddito).
+Toda a organização e planejamento em relação ao projeto estão publicamente disponíveis no [Trello](https://trello.com/b/jWWfNBZU/reddito).
 
+
+<br>
+<br>
+
+---
 
 ## &#10140; Autores:
-- ***Anne dos Santos Ribeiro*** - Líder e Organizadora - rm13537 
-- Carolina Barbosa Pacífico de Almeida - Designer Gráfico - rm13704
-- Heloísa Real - Frontend - rm13299
-- Julie Missae Sanday - Designer Gráfico - rm12152
-- Maria Clara Gomes Gonçalves de Almeida - Designer Gráfico - rm11959
-- Mateus Felipe da Silveira Vieira - Backend e Banco de Dados - rm14598
+ 
+| Integrantes | Funções | RM | Git Hub User 
+|------------------------------ | -------------------  | -------------| ----------- |
+| ***Anne dos Santos Ribeiro*** | ***Líder e Organizadora*** | 13537 | [Anne-Ribeiro](https://github.com/Anne-Ribeiro)
+| Carolina Barbosa Pacífico de Almeida | Designer Gráfico | 13704 | [CarolinaPacifico](https://github.com/CarolinaPacifico)
+| Heloísa Real | Frontend | 13299 | [heloreal17](https://github.com/heloreal17)
+| Julie Missae Sanday | Designer Gráfico | 12152 | [sandayjulie](https://github.com/sandayjulie)
+| Maria Clara Gomes Gonçalves de Almeida | Designer Gráfico | 11959 | []()
+| Mateus Felipe da Silveira Vieira | Backend e Banco de Dados | 14598 | [habdig7oficial](https://github.com/habdig7oficial)
 
-Quer ter seu nome aparecendo aqui um dia? Faça suas contribuições e faça um pull request
+Gostaria de ter seu nome aparecendo aqui algum dia? Comece agora as contribuições e faça um pull request!
 
+<div align="center">
+<a href="https://reddito-server.herokuapp.com/">
+<img width="160" src="https://raw.githubusercontent.com/habdig7oficial/Reddito/bazuca-backend%2B%2B/src/assets/Images/logohomepage.png" >
+</a>
+</div>
 
 <div align="center">
 <img width="40" src="https://raw.githubusercontent.com/habdig7oficial/Reddito/bazuca-backend%2B%2B/src/assets/Images/instagram.png" alt="Reddito Instagram">
@@ -111,9 +138,12 @@ Quer ter seu nome aparecendo aqui um dia? Faça suas contribuições e faça um 
 <img width="40" src="https://raw.githubusercontent.com/habdig7oficial/Reddito/bazuca-backend%2B%2B/src/assets/Images/youtube.png" alt="Reddito Youtube">
 </div>
 
----
+
 
 # <h1 align="center"> Este documento é parte da documentação do Reddito </h1>
+
+<br>
+<br>
 
 #### **Copyright &#169; 2022 Anne dos Santos Ribeiro, Carolina Barbosa Pacífico de Almeida, Heloísa Real, Julie Missae Sanday, Maria Clara Gomes Gonçalves, Mateus Felipe da Silveira Vieira**
 
